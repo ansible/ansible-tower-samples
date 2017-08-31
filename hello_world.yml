@@ -1,7 +1,11 @@
 - name: Hello World Sample
   hosts: all
+- include_vars: /home/ec2-user/cred.yml
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World!"
+    - name: Docker login
+      shell: echo "{{ un }}"
+       
 
