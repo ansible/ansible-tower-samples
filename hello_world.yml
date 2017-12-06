@@ -4,4 +4,6 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
+    - name: run the shell command
+      shell: echo "HelloWorld"
 
