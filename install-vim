@@ -1,0 +1,8 @@
+---
+- hosts: project-1
+  connection: ssh
+  gather_facts: yes
+
+  tasks:
+    - name: install vim
+      yum: pkg=vim state=removed update_cache=true
