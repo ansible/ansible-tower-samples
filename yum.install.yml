@@ -1,0 +1,33 @@
+ ---
+- hosts: linux-servers
+  connection: ssh
+  gather_facts: yes
+  
+  
+  tasks:
+    - name : creating a directory
+      file:
+       path: /tmp/backups
+       state: directory
+       mode: "u=rw,g=rx,o=rx"
+       
+       
+    - name: creating multiple directories
+      file: 
+       path: "{{item}}"
+       state: directory
+       with_items: 
+       - '/tmp/devops1'
+       - '/tmp/devops2'
+       - '/tmp/devops3'
+       - '/home/devops3'
+       
+       
+    - name: creating file
+      file:
+      path: "/tmp/devops2/devops2.txt"
+      state: touch 
+      mode: 777
+      owner: ansi
+      
+    
