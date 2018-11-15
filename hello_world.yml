@@ -4,4 +4,4 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
-
+        msg: "Welcome to Ansible" 
