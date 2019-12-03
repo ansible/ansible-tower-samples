@@ -1,0 +1,12 @@
+# Ansible/Tower test logging to remote hosts
+- name: Test syslog
+  syslogger:
+    msg: "Hello from ansible"
+    priority: "err"
+    facility: "daemon"
+    log_pid: true
+
+# Basic usage
+- name: Simple Usage
+  syslogger:
+    msg: "I will end up as daemon.info"
