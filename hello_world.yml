@@ -1,7 +1,11 @@
 - name: Hello World Sample
   hosts: all
+  vars:
+    message: "Hello World!"
+    pauseInSec: 0
   tasks:
     - name: Hello Message
       debug:
-        msg: "Hello World!"
-
+        msg: "{{ message }}"
+    - pause:
+        seconds: "{{ pauseInSec }}"
