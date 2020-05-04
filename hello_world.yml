@@ -5,3 +5,4 @@
       debug:
         msg: "Hello World!"
 
+- ec2_instance_info:
