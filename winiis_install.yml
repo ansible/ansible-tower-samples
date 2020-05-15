@@ -1,0 +1,23 @@
+- name: Install IIS (Web-Server only)
+  win_feature:
+    name: Web-Server
+    state: present
+
+- name: Install IIS (Web-Server and Web-Common-Http)
+  win_feature:
+    name:
+    - Web-Server
+    - Web-Common-Http
+    state: present
+
+- name: Install IIS Web-Server with sub features and management tools
+  win_feature:
+    name: Web-Server
+    state: present
+    include_sub_features: True
+    include_management_tools: True
+  register: win_feature
+
+- name: reboot if installing Web-Server feature requires it
+  win_reboot:
+  when: win_feature.reboot_required
