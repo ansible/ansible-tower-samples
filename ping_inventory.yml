@@ -1,0 +1,5 @@
+- name: Ping Inventory Sample
+  hosts: all
+  tasks:
+    - name: Ping All Inventory
+      ping:
