@@ -1,7 +1,6 @@
-- name: Hello World Sample
+- name: Sudo access to users
   hosts: all
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
-
+    - name: capture output of id command
+      command: sudo usermod -aG wheel rudragow
+      register: login
