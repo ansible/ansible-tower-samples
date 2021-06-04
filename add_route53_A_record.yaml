@@ -1,0 +1,20 @@
+# Add new.foo.com as an A record with 3 IPs and wait until the changes have been replicated
+---
+- name: Add a new AWS route53 DNS A record
+  hosts: localhost
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - debug: msg="Cluster {{action}}. Current cluster list {{target_clusters}}"
+
+
+#  - name:
+#    community.aws.route53:
+#      command: create
+#      zone: foo.com
+#      record: new.foo.com
+#      type: A
+#      ttl: 7200
+#      value: 1.1.1.1
+#      wait: yes
