@@ -11,7 +11,7 @@
         msg: |
             Ansible Distribution: {{ ansible_distribution }}
             Ansible Dist version: {{ ansible_distribution_version }}
-            Ansible tower {{AWX_HOST}}. Base Domain {{cluster_deployment.baseDomain}} "
+            Ansible tower {{env.AWX_HOST}}. Base Domain {{cluster_deployment.baseDomain}} "
       debug:
         msg: "{{ msg.split('\n') }}"
 
