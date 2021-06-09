@@ -1,13 +1,21 @@
 # Add new.foo.com as an A record with 3 IPs and wait until the changes have been replicated
 ---
 - name: Add a new AWS route53 DNS A record
-  hosts: localhost
-  gather_facts: no
-  connection: local
+  hosts: all
+#  gather_facts: no
+#  connection: local
 
   tasks:
-  - debug: msg="Cluster {{action}}. Current cluster list {{target_clusters}}"
-  - debug: msg="Ansible tower {{AWX_HOST}}. Base Domain {{cluster_deployment.baseDomain}} "
+  - name: Print some variables
+    vars:
+      msg: |
+          Ansible Distribution: {{ ansible_distribution }}
+          Ansible Dist version: {{ ansible_distribution_version }}
+          Cluster {{action}}. Current cluster list {{target_clusters}}"
+          Ansible tower {{AWX_HOST}}. Base Domain {{cluster_deployment.baseDomain}} "
+      debug:
+        msg: "{{ msg.split('\n') }}"
+
 
 
 #  - name:

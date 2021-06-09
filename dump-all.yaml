@@ -11,10 +11,7 @@
       debug:
         msg: "{{ msg.split('\n') }}"
       tags: debug_info
-
-  - debug: msg="Cluster {{action}}. Current cluster list {{target_clusters}}"
-
-  - debug: msg="Ansible tower {{AWX_HOST}}. Base Domain {{cluster_deployment.baseDomain}} "
+    
     - name: Print more debug information
       vars:
         msg: |
