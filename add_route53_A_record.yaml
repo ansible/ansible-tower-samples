@@ -6,12 +6,16 @@
 #  connection: local
 
   tasks:
+    - name: Basic env usage
+      debug:
+        msg: "'{{ lookup('env', 'AWX_HOST') }}' is the AWX_HOST environment variable."
+
     - name: Print some variables
       vars:
         msg: |
             Ansible Distribution: {{ ansible_distribution }}
             Ansible Dist version: {{ ansible_distribution_version }}
-            Ansible tower {{env.AWX_HOST}}. Base Domain {{cluster_deployment.baseDomain}} "
+#            Ansible tower {{env.AWX_HOST}}. Base Domain {{cluster_deployment.baseDomain}} "
       debug:
         msg: "{{ msg.split('\n') }}"
 
