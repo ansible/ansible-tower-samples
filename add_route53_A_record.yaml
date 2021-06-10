@@ -17,7 +17,7 @@
             Ansible Dist version: {{ ansible_distribution_version }}
             ACM Base Domain {{cluster_deployment['baseDomain']}}
             ACM Cluster name {{cluster_deployment['clusterName']}}
-#            API record api.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
+            API record api.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
 #            Ingress record  *.apps.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
       debug:
         msg: "{{ msg.split('\n') }}"
