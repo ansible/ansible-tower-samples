@@ -1,0 +1,7 @@
+- name: Fail Sample
+  hosts: all
+  tasks:
+    - name: Always Fail
+      fail:
+        msg: "Always fail this task!"
+
