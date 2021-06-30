@@ -1,0 +1,48 @@
+# Red Hat Advanced Cluster Management for Kubernetes cluster deployment info
+---
+- name: Red Hat Advanced Cluster Management managed cluster deployment info
+  hosts: all
+  #  gather_facts: no
+  #  connection: local
+
+  tasks:
+    - name: Basic env usage
+      debug:
+        msg: "'{{ lookup('env', 'AWX_HOST') }}' is the AWX_HOST environment variable."
+
+    - name: Print some variables
+      vars:
+        msg: |
+          Ansible Distribution: {{ ansible_distribution }}
+          Ansible Dist version: {{ ansible_distribution_version }}
+          ACM Base Domain {{cluster_deployment['baseDomain']}}
+          ACM Cluster name {{cluster_deployment['clusterName']}}
+          API record api.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
+      #            Ingress record  *.apps.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
+      debug:
+        msg: "{{ msg.split('\n') }}"
+
+    - name: Run only for Amazon Web Services
+      debug:
+        msg: "AWS cluster"
+      when: cluster_deployment.platform.aws is defined
+
+    - name: Run only for Microsoft Azure
+      debug:
+        msg: "Azure cluster"
+      when: cluster_deployment.platform.azure is defined
+
+    - name: Run only for Google Cloud Platform
+      debug:
+        msg: "GCP cluster"
+      when: cluster_deployment.platform.gcp is defined
+
+    - name: Run only for Red Hat OpenStack
+      debug:
+        msg: "OpenStack cluster"
+      when: cluster_deployment.platform.openstack is defined
+
+    - name: Run only for VMware vSphere
+      debug:
+        msg: "VMware cluster"
+      when: cluster_deployment.platform.vsphere is defined
