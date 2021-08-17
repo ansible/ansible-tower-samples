@@ -2,8 +2,8 @@
 ---
 - name: Add a new AWS route53 DNS A record
   hosts: all
-#  gather_facts: no
-#  connection: local
+  #  gather_facts: no
+  #  connection: local
 
   tasks:
     - name: Basic env usage
@@ -13,23 +13,58 @@
     - name: Print some variables
       vars:
         msg: |
-            Ansible Distribution: {{ ansible_distribution }}
-            Ansible Dist version: {{ ansible_distribution_version }}
-            ACM Base Domain {{cluster_deployment['baseDomain']}}
-            ACM Cluster name {{cluster_deployment['clusterName']}}
-            API record api.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
-#            Ingress record  *.apps.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
+          Ansible Distribution: {{ ansible_distribution }}
+          Ansible Dist version: {{ ansible_distribution_version }}
+          ACM Base Domain {{cluster_deployment['baseDomain']}}
+          ACM Cluster name {{cluster_deployment['clusterName']}}
+          API record api.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
+      #            Ingress record  *.apps.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
       debug:
         msg: "{{ msg.split('\n') }}"
 
+- name: Add an AWS Route53 DNS entry for API (VMware)
+  debug:
+    msg: "AWS cluster"
+  when: cluster_deployment.platform.aws is defined
 
+- name: Add an AWS Route53 DNS entry for API (VMware)
+  debug:
+    msg: "VMware cluster"
+  when: cluster_deployment.platform.vsphere is defined
 
-#  - name:
+- name: Add an AWS Route53 DNS entry for API (GCP)
+  debug:
+    msg: "GCP cluster"
+  when: cluster_deployment.platform.gcp is defined
+
+# {% if interfaces.vlan1 is defined %}
+# {{ interfaces.vlan1.ip }}
+# {% else %}
+# {{ interfaces.vlan2.ip|default("127.0.3.1") }}
+# {% endif %}
+#
+# {% if 'vlan1' in interfaces %}
+
+#  - name: Add an AWS Route53 DNS entry for API (VMware)
 #    community.aws.route53:
 #      command: create
-#      zone: foo.com
-#      record: new.foo.com
+#      zone: {{cluster_deployment['baseDomain']}}
+# #     record: api.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}
+#      record: api.{{install_config['metadata']['name']}}.{{install_config['baseDomain']}}
 #      type: A
 #      ttl: 7200
-#      value: 1.1.1.1
+#      value: {{platform.vsphere.apiVIP}}
 #      wait: yes
+#      when: cluster_deployment.platform.vsphere is defined
+
+#  - name: Add an AWS Route53 DNS entry for Ingress (VMware)
+#    community.aws.route53:
+#      command: create
+#      zone: {{cluster_deployment['baseDomain']}}
+# #     record: "*.apps.{{cluster_deployment['clusterName']}}.{{cluster_deployment['baseDomain']}}"
+#      record: "*.apps.{{install_config['metadata']['name']}}.{{install_config['baseDomain']}}"
+#      type: A
+#      ttl: 7200
+#      value: {{platform.vsphere.ingressVIP}}
+#      wait: yes
+#      when: cluster_deployment.platform == vsphere
