@@ -1,0 +1,6 @@
+- name: This is a test
+  host: all
+  tasks:
+    - name: Hello Message 2
+      debug:
+        msg: "Duck!"
