@@ -13,18 +13,18 @@
       delegate_to: 127.0.0.1
       register: ansible_config_out
 
-- name: Play 2 to test zos collections on the mainframe
-  hosts: all
-  serial: 100%
-  # =======================
-  collections:
-    - ibm.ibm_zos_core
-
-    #  roles:
-  tasks:
-    - name: Ping the zos host and perform resource checks
-      ping:
-      register: ping_result
+#- name: Play 2 to test zos collections on the mainframe
+#  hosts: all
+#  serial: 100%
+#  # =======================
+#  collections:
+#    - ibm.ibm_zos_core
+#
+#    #  roles:
+#  tasks:
+#    - name: Ping the zos host and perform resource checks
+#      ping:
+#      register: ping_result
 #    - { role: fetch_metadata_mainframe }
 #    - { role: fetch_artifacts_mainframe }
 #    - { role: stage_files_mainframe }
