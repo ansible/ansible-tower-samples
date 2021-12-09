@@ -16,6 +16,8 @@
 - name: Play 2 to test zos collections on the mainframe
   hosts: all
   serial: 100%
+  environment:
+    ANSIBLE_COLLECTIONS_PATHS: ./collections
   # =======================
   collections:
     - ibm.ibm_zos_core
