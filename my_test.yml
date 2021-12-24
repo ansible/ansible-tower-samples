@@ -1,6 +1,24 @@
 - name: This is a test
   hosts: all
   tasks:
+    - name: Hello Message 1
+      debug:
+        msg: "Duck!"
     - name: Hello Message 2
       debug:
         msg: "Duck!"
+    - name: Hello Message 3
+      debug:
+        msg: "Duck!"
+    - name: Hello Message 4
+      debug:
+        msg: "Duck!"
+    - name: Hello Message 5
+      debug:
+        msg: "Duck!"
+    - name: Hello Message 6
+      debug:
+        msg: "Duck!"
+    - name: Hello Message 7
+      debug:
+        msg: "Duck!"    
