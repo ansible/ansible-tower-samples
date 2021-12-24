@@ -22,3 +22,12 @@
     - name: Hello Message 7
       debug:
         msg: "Hello World"
+    - name: Hello Message 8
+      debug:
+        msg: "Hello World"
+    - name: Hello Message 9
+      debug:
+        msg: "Hello World"
+    - name: Hello Message 10
+      debug:
+        msg: "Hello World"   
