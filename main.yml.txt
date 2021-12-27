@@ -1,0 +1,384 @@
+---
+###################################################################
+# Copy the configuration items for Python on z/OS
+###################################################################
+
+#- name: Execute TSO commands to allocate USS directories
+#  zos_tso_command:
+#      commands:
+#          - BPXBATCH SH mkdir -p /u/d020216/global/zosconnect
+#
+- name: Execute TSO commands to allocate USS directories
+  zos_tso_command:
+      commands:
+          - BPXBATCH SH mkdir -p /u/d020216/global/zosconnect/omegamon/lib/features
+          - BPXBATCH SH mkdir -p /u/d020216/global/zosconnect/scripts/__pycache__
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/v3r0/liv/extensions
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/v3r0/plt/extensions
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/v3r0/spc/extensions
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/v3r0/tst/extensions
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/transfers/liv
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/transfers/plt
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/liv
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/plt
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/tst
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/liv
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/plt
+          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/spc
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/tst
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/apis
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/apiRequesters
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/rules
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/services
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/apis
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/apiRequesters
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/rules
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/services
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/apis
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/apiRequesters
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/rules
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/services
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/apis
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/apiRequesters
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/rules
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/services
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/transfers/liv
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/transfers/plt
+
+
+
+
+
+- name: Copy the zOS Connect Scripts and validate checksum
+  zos_copy:
+    src: "../requirements_roles/uss_zosconnect/files/scripts/"
+    dest: /u/d020216/global/zosconnect/
+    validate: true
+  tags:
+    - uss_zosconnect
+
+
+#- name: Execute TSO commands to allocate USS directories
+#  zos_tso_command:
+#      commands:
+#          - BPXBATCH SH mkdir -p /u/d020216/global/zosconnect/scripts/__pycache__
+#
+#
+#
+#- name: Copy the production properties files for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/v3r0/liv/extensions
+#    dest: /u/d020216/global/zosconnect/v3r0/liv/
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the production angel options file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/v3r0/liv/angel.options"
+#    dest: /u/d020216/global/zosconnect/v3r0/liv/angel.options
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the pilot properties files for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/v3r0/plt/extensions/"
+#    dest: /u/d020216/global/zosconnect/v3r0/plt/
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the pilot angel options file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/v3r0/plt/angel.options"
+#    dest: /u/d020216/global/zosconnect/v3r0/plt/angel.options
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the special properties files for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/v3r0/spc/extensions/"
+#    dest: /u/d020216/global/zosconnect/v3r0/spc/
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the special angel options file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/v3r0/spc/angel.options"
+#    dest: /u/d020216/global/zosconnect/v3r0/spc/angel.options
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the test properties files for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/v3r0/tst/extensions/"
+#    dest: /u/d020216/global/zosconnect/v3r0/tst/
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the test angel options file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/v3r0/tst/angel.options"
+#    dest: /u/d020216/global/zosconnect/v3r0/tst/angel.options
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#
+#- name: Execute TSO commands to allocate omegamon USS directories
+#  zos_tso_command:
+#      commands:
+#          - BPXBATCH SH mkdir -p /u/d020216/global/zosconnect/omegamon/lib/features
+#
+#
+#- name: Copy the Omegamon interceptor for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/omegamon/com.ibm.omegamon.kjj.interceptor_2.0.jar"
+#    dest: /u/d020216/global/zosconnect/omegamon/lib/com.ibm.omegamon.kjj.interceptor_2.0.jar
+#    is_binary: true
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the Omegamon interceptor config for zOS Connect and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_zosconnect/files/omegamon/com.ibm.omegamon.kjj.interceptor_2.0.mf"
+#    dest: /u/d020216/global/zosconnect/omegamon/lib/features/com.ibm.omegamon.kjj.interceptor_2.0.mf
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+
+
+
+
+
+
+#- name: Execute TSO commands to allocate USS shared directories
+#  zos_tso_command:
+#      commands:
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/liv
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/plt
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/tst
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/liv
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/plt
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/tst
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/spc
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/rules
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/rules
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/rules
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/rules
+##
+#
+#- name: Copy the production IND configuration file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/config/ind/livserver.xml
+#    dest: /u/d020216/global/zosconnect/shared/config/ind/liv/livserver.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the pilot IND configuration file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/config/ind/pltserver.xml
+#    dest: /u/d020216/global/zosconnect/shared/config/ind/plt/pltserver.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the test IND configuration file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/config/ind/tstserver.xml
+#    dest: /u/d020216/global/zosconnect/shared/config/ind/tst/tstserver.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the production IS configuration file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/config/is/livserver.xml
+#    dest: /u/d020216/global/zosconnect/shared/config/is/liv/livserver.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the pilot IS configuration file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/config/is/pltserver.xml
+#    dest: /u/d020216/global/zosconnect/shared/config/is/plt/pltserver.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the special IS configuration file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/config/is/spcserver.xml
+#    dest: /u/d020216/global/zosconnect/shared/config/is/spc/spcserver.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the test IS configuration file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/config/is/tstserver.xml
+#    dest: /u/d020216/global/zosconnect/shared/config/is/tst/tstserver.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#
+#- name: Copy the pilot IS repository rules file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/repository/piltRules.xml
+#    dest: /u/d020216/global/zosconnect/shared/repository/plt/rules/piltRules.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the pilot IS repository rules file for zOS Connect and validate checksum
+#  zos_copy:
+#    src: ../requirements_roles/uss_zosconnect/files/shared/repository/testRules.xml
+#    dest: /u/d020216/global/zosconnect/shared/repository/tst/rules/testRules.xml
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+
+
+
+
+
+
+#- name: Execute TSO commands to allocate USS directories
+#  zos_tso_command:
+#      commands:
+##          - BPXBATCH SH mkdir -p /u/d020216/global/zosconnect/omegamon/lib/features
+##          - BPXBATCH SH mkdir -p /u/d020216/global/zosconnect/scripts/__pycache__
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/v3r0/liv/extensions
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/v3r0/plt/extensions
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/v3r0/spc/extensions
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/v3r0/tst/extensions
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/transfers/liv
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/transfers/plt
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/liv
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/plt
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/ind/tst
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/liv
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/plt
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/spc
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/config/is/tst
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/apis
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/apiRequesters
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/rules
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/liv/services
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/apis
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/apiRequesters
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/rules
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/plt/services
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/apis
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/apiRequesters
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/rules
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/spc/services
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/apis
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/apiRequesters
+##          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/rules
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/shared/repository/tst/services
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/transfers/liv
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/transfers/plt
+#          - BPXBATCH SH  mkdir -p /u/d020216/global/zosconnect/servers
+#
+
+
+
+#- name: Copy Python Config script to a USS location and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_python/files/pythonUpdate.sh"
+#    dest: /u/d020216/global/python/scripts/pythonUpdate.sh
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#- name: Change permissions on Python Config script in the directory
+#  zos_mvs_raw:
+#    program_name: BPXBATCH
+#    auth: no
+#    parm: "sh chmod 755 /u/d020216/global/python/scripts/pythonUpdate.sh"
+#    dds:
+#      - dd_output:
+#          dd_name: stdout
+#          return_content:
+#            type: text
+#      - dd_output:
+#          dd_name: stderr
+#          return_content:
+#            type: text
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Copy the AWX install file to a USS location and validate checksum
+#  zos_copy:
+#    src: "../requirements_roles/uss_python/files/ansible-tower-cli-latest.tar.gz"
+#    dest: /u/d020216/global/python/scripts/ansible-tower-cli-latest.tar.gz
+#    is_binary: true
+#    validate: true
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Make sure this directory exists
+#  zos_mvs_raw:
+#    program_name: BPXBATCH
+#    auth: no
+#    parm: "sh mkdir /u/d020216/global/python/temp"
+#    dds:
+#      - dd_output:
+#          dd_name: stdout
+#          return_content:
+#            type: text
+#      - dd_output:
+#          dd_name: stderr
+#          return_content:
+#            type: text
+#  tags:
+#    - uss_zosconnect
+#
+#
+#- name: Change owner ship of all items in the directory
+#  zos_mvs_raw:
+#    program_name: BPXBATCH
+#    auth: no
+#    parm: "sh chown -R OMVS:OMVSGRP /u/d020216/global/python"
+#    dds:
+#      - dd_output:
+#          dd_name: stdout
+#          return_content:
+#            type: text
+#      - dd_output:
+#          dd_name: stderr
+#          return_content:
+#            type: text
+#  tags:
+#    - uss_zosconnect
