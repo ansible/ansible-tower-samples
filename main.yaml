@@ -1,0 +1,62 @@
+---
+- name: Setup provider and varables
+  set_fact:
+    bamProvider: "{{ bamProvider }}"
+#    keyword: "{{ keyword }}"
+#    count: "{{ count }}"
+#    start: "{{ start }}"
+#    types: "{{ types }}"
+
+- name: Login if required
+#  include_tasks: authenticate.yaml
+  include_role:
+    name: authenticate
+#  when: auth_token is not defined
+
+#- debug: var=auth_token
+- name: Print some debug information 
+  vars: 
+    msg: |
+      {{ vars | to_nice_json }} 
+  debug: 
+    msg: "{{ msg.split('\n') }}"       
+  tags: debug_info
+
+- debug: var=keyword
+
+- debug: var=count
+
+- debug: var=start
+
+- debug: var=types
+
+################################################################
+################################################################
+#
+# Should probably only run subsequent code if the authenticate role
+#   does not fail.
+#
+################################################################
+################################################################
+
+- name: Issue searchByObjectTypes() API call
+  uri:
+    url: "https://{{ bamProvider.server }}:{{ bamProvider.server_port }}/Services/REST/v1/searchByObjectTypes?count={{ count }}&keyword={{ keyword }}&start={{ start }}&types={{ types }}"
+    method: GET
+    timeout: "{{ bamProvider.timeout }}"
+    validate_certs: "{{ bamProvider.validate_certs }}"
+    headers:
+      Authorization: "{{ auth_token }}"
+      Accept: application/json
+  register: result
+  delegate_to: localhost
+
+#- debug: var=result
+
+- name: Set the results into results
+  set_fact:
+    entity: "{{ result.json }}"
+  when: result is success
+
+#- debug: var=entity
+
