@@ -6,7 +6,18 @@
       debug:
         msg: "Hello World!"
 
-    - name: Example playbook sending mail to root
-      community.general.mail:
-        subject: System {{ ansible_hostname }} has been successfully provisioned.
+    - name: Make temp directory for Python virtualenv
+      tempfile:
+        state: directory
+        prefix: zabbix_monitoring.
+      register: tempvenv
       delegate_to: localhost
+      become: no
+
+    - name: Install the zabbix-api Python module
+      pip:
+        name: zabbix-api
+        virtualenv: "{{ tempvenv.path }}"
+        virtualenv_site_packages: yes
+      delegate_to: localhost
+      become: no
