@@ -11,4 +11,4 @@
         state: restarted
         name: dnsmasq
       become: yes
-      become_user: ansibleadm
+      remote_user: ansibleadm
