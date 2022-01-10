@@ -13,7 +13,7 @@
 #      become: yes
 #      become_user: ansibleadm
 - name: Add hosts and IPs to DNS server
-  hosts: localhost
+#  hosts: localhost
   vars:
     dns_servers:
       PROD: a0680v2waut0288
