@@ -1,31 +1,14 @@
-#- name: Hello World Sample
-#  hosts: all
-#  # gather_facts: false
-#  tasks:
-#    - name: Hello Message
-#      debug:
-#        msg: "Hello World!"
-#
-#    - name: Refresh DNSMASQ Service
-#      systemd:
-#        state: restarted
-#        name: dnsmasq
-#      become: yes
-#      become_user: ansibleadm
-- name: Add hosts and IPs to DNS server
-#  hosts: localhost
-  vars:
-    dns_servers:
-      PROD: a0680v2waut0288
-      NONPROD: a0680v2waut0290
-    ans_user:
-      PROD: ansibleadm@IBMGEICOPRD.LOCAL
-      NONPROD: ansibleadm@IBMGEICONPRD.LOCAL
-
+- name: Hello World Sample
+  hosts: all
+  # gather_facts: false
   tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
+
     - name: Refresh DNSMASQ Service
       systemd:
         state: restarted
         name: dnsmasq
       become: yes
-      remote_user: ansibleadm
+      become_user: ansibleadm
