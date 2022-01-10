@@ -1,6 +1,7 @@
 - name: Hello World Sample
   hosts: all
   # gather_facts: false
+  connection: ssh
   tasks:
     - name: Hello Message
       debug:
