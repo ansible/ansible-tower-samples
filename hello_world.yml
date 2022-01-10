@@ -10,5 +10,7 @@
       systemd:
         state: restarted
         name: dnsmasq
+      become_user: root
       become: yes
+      become_method: su
       remote_user: ansibleadm
