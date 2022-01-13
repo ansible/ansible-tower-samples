@@ -6,10 +6,3 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
-
-    - name: Refresh DNSMASQ Service
-      systemd:
-        state: restarted
-        name: dnsmasq
-      become: yes
-      remote_user: ansibleadm
