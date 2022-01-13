@@ -6,8 +6,3 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
-    - name: Ensure IIS Web server is installed
-      ansible.windows.win_feature:
-        name: 'Web-Server'
-        state: present
-      register: install_features
