@@ -3,4 +3,4 @@ collections:
 # With just the collection name
 - community.general
 - ansible.windows
-- community.vmware.vmware_guest
+- community.vmware
