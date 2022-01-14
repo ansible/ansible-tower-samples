@@ -1,0 +1,68 @@
+---
+
+- hosts: localhost
+  # connection: local
+  gather_facts: False
+  tasks:
+
+    - name: "include variables for {{ provision_location }}"
+      include_vars:
+        dir: "vars/{{ provision_location }}"
+      no_log: True
+
+    - name: "Calculating Required Disk Space"
+      set_fact:
+        provision_disk_size_gb: "{{ ((((( fs_opt_size_gb|int + fs_opt_data_size_gb|int + fs_opt_splunk_size_gb|int +( provision_memory_mb|int / 1024 ) / 2 + (default_os_size_gb|default(20)|int) ) / (disk_size_multiplication_of|default(8))|int ) )|int + 1 ) * (disk_size_multiplication_of|default(8))|int) |int }}"
+
+    - name: Set minimum disk size
+      set_fact:
+        provision_disk_size_gb: 40
+      when: provision_disk_size_gb|int < 40
+
+    - community.vmware.vmware_guest:
+        hostname: "{{ vsphere_server }}"
+        username: "{{ vsphere_username }}"
+        password: "{{ vsphere_password }}"
+        validate_certs: no
+        folder: "{{ vsphere_folder }}"
+        name: "{{ provision_hostname }}"
+        annotation: "{{ provision_notes | default('Build by Ansible') }}"
+        datacenter: "{{ vsphere_datacenter }}"
+        cluster: "{{ vsphere_cluster | default('avi_primary') }}"
+        wait_for_ip_address: yes
+        guest_id: "{{ provision_vmware_guestid | default('oracleLinux64Guest') }}"
+        state: poweredon
+        template: "{{ provision_template | default('oel7template')}}"
+        disk:
+        - size_gb: "{{ provision_disk_size_gb | default(40) }}"
+          type: eagerzeroedthick
+          datastore: "{{ provision_datastore | default('tor2_aviso-ap-LinuxLab') }}"
+        hardware:
+          memory_mb: "{{ provision_memory_mb | default(2048) }}"
+          num_cpus: "{{ provision_num_cpus | default (1) }}"
+          version: "17"
+          scsi: paravirtual
+        networks:
+        - name: "{{ vsphere_vlan[provision_vlan]['name'] }}"
+          ip: "{{ provision_net_ipv4 }}"
+          netmask: "{{ vsphere_vlan[provision_vlan]['netmask'] | default('255.255.255.0') }}"
+          gateway: "{{ vsphere_vlan[provision_vlan]['gateway'] }}"
+          domain: "{{ provision_domain | default('cg.net') }}"
+          dns_servers:
+          - "{{ provision_net_ipv4_dns1 | default('10.20.31.239') }}"
+          - "{{ provision_net_ipv4_dns2 | default('10.20.31.240') }}"
+          type: static
+        customization:
+          hostname: "{{ provision_hostname }}"
+          dns_servers:
+            - "{{ provision_net_ipv4_dns1 | default('10.20.31.239') }}"
+            - "{{ provision_net_ipv4_dns2 | default('10.20.31.240') }}"
+          # dns_suffix:
+          #   - "{{ provision_domain | default('cg.net') }}"
+          domain: "{{ provision_domain | default('cg.net') }}"
+      register: provision
+
+    - debug:
+        var: provision
+        verbosity: 1
+
