@@ -6,15 +6,15 @@
     - name: "include variables for {{ provision_location }}"
       include_vars:
         dir: "vars/{{ provision_location }}"
-      no_log: True
+#      no_log: True
 
     - name: "Calculating Required Disk Space"
       set_fact:
-        provision_disk_size_gb: "{{ ((((( fs_opt_size_gb|int + fs_opt_data_size_gb|int + fs_opt_splunk_size_gb|int +( provision_memory_mb|int / 1024 ) / 2 + (default_os_size_gb|default(20)|int) ) / (disk_size_multiplication_of|default(8))|int ) )|int + 1 ) * (disk_size_multiplication_of|default(8))|int) |int }}"
+        provision_disk_size_gb: "{{ ((((( fs_opt_size_gb|int + fs_opt_data_size_gb|int + fs_opt_splunk_size_gb|int +( provision_memory_mb|int / 10 ) / 2 + (default_os_size_gb|default(1)|int) ) / (disk_size_multiplication_of|default(1))|int ) )|int + 1 ) * (disk_size_multiplication_of|default(1))|int) |int }}"
 
     - name: Set minimum disk size
       set_fact:
-        provision_disk_size_gb: 40
+        provision_disk_size_gb: 1
       when: provision_disk_size_gb|int < 40
 
     - community.vmware.vmware_guest:
@@ -32,11 +32,11 @@
         state: poweredon
         template: "{{ provision_template | default('oel7template')}}"
         disk:
-        - size_gb: "{{ provision_disk_size_gb | default(40) }}"
+        - size_gb: "{{ provision_disk_size_gb | default(1) }}"
           type: eagerzeroedthick
           datastore: "{{ provision_datastore | default('tor2_aviso-ap-LinuxLab') }}"
         hardware:
-          memory_mb: "{{ provision_memory_mb | default(2048) }}"
+          memory_mb: "{{ provision_memory_mb | default(10) }}"
           num_cpus: "{{ provision_num_cpus | default (1) }}"
           version: "17"
           scsi: paravirtual
