@@ -4,4 +4,4 @@ collections:
 - community.general
 #- ansible.windows
 #- community.vmware
-- Azure.Azcollection
+- azure.azcollection
