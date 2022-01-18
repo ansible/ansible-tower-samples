@@ -5,7 +5,6 @@
   tasks:
     - name: Hello Message
       debug:
-      
         msg: "Hello World!"
         
     - name: Create private endpoint
