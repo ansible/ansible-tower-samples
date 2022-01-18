@@ -8,7 +8,7 @@
         msg: "Hello World!"
         
     - name: Create private endpoint
-      azure_rm_privateendpoint:
+      azure.azcollection.azure_rm_privateendpoint:
         name: xxx-xx-xxx-xxx-xxx-xxxx-xxx-004-vault-004
         subscription_id: xxxx
         resource_group: xx-xxx-xxx-xxx-xxxx-xxx
