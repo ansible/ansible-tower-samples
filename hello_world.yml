@@ -7,26 +7,27 @@
       debug:
       
         msg: "Hello World!"
+        
     - name: Create private endpoint
       azure_rm_privateendpoint:
-        name: "azr_pve_name"
-        subscription_id: "azr_subid"
-        resource_group: "azr_rg_name"
+        name: xxx-xx-xxx-xxx-xxx-xxxx-xxx-004-vault-004
+        subscription_id: xxxx
+        resource_group: xx-xxx-xxx-xxx-xxxx-xxx
         state: present
         auth_source: auto
         private_link_service_connections:
-          - name: "azr_pve_name"
-            private_link_service_id: /subscriptions/azr_subid/resourceGroups/azr_rg_name/providers/Microsoft.KeyVault/vaults/azr_kv_name
+          - name: xxx-xx-xxx-xxx-xxx-xxxx-xxx-004-vault-004
+            private_link_service_id: /subscriptions/xxxx/resourceGroups/xx-xxx-xxx-xxx-xxxx-xxx/providers/Microsoft.KeyVault/vaults/xx-xxx-xxx-xxx-xxxx-xxx-004
             group_ids: 
-              - "azr_pve_sub_resource"
+              - azr_pve_sub_resource
         subnet:
-          id: /subscriptions/azr_subid/resourceGroups/azr_rg_name/providers/Microsoft.Network/virtualNetworks/azr_vnet_name/subnets/azr_snet_sec
+          id: /subscriptions/xxxx/resourceGroups/xx-xxx-xxx-xxx-xxxx-xxx/providers/Microsoft.Network/virtualNetworks/xxxx-exe-xxx-xxx-east-001/subnets/xxxx-exe-xxx-xxx-sec-east-001
         tags:
-            Description: "Private Endpoint: For Resource azr_kv_name"
-            Subscription: "subscode"
-            AppCode: "appcode"
-            AppOwner: "appowner"
-            Environment: "envcode"
-            Location: "locationus"
-            Instance: "pve_kv_instance"
+            Description: "Private Endpoint: For Resource xx-xxx-xxx-xxx-xxxx-xxx-004"
+            Subscription: subscode
+            AppCode: appcode
+            AppOwner: appowner
+            Environment: envcode
+            Location: locationus
+            Instance: 001
             ResourceType: pve
