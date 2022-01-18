@@ -5,9 +5,28 @@
   tasks:
     - name: Hello Message
       debug:
+      
         msg: "Hello World!"
-    - name: Ensure IIS Web server is installed
-      ansible.windows.win_feature:
-        name: 'Web-Server'
+    - name: Create private endpoint
+      azure_rm_privateendpoint:
+        name: "azr_pve_name"
+        subscription_id: "azr_subid"
+        resource_group: "azr_rg_name"
         state: present
-      register: install_features
+        auth_source: auto
+        private_link_service_connections:
+          - name: "azr_pve_name"
+            private_link_service_id: /subscriptions/azr_subid/resourceGroups/azr_rg_name/providers/Microsoft.KeyVault/vaults/azr_kv_name
+            group_ids: 
+              - "azr_pve_sub_resource"
+        subnet:
+          id: /subscriptions/azr_subid/resourceGroups/azr_rg_name/providers/Microsoft.Network/virtualNetworks/azr_vnet_name/subnets/azr_snet_sec
+        tags:
+            Description: "Private Endpoint: For Resource azr_kv_name"
+            Subscription: "subscode"
+            AppCode: "appcode"
+            AppOwner: "appowner"
+            Environment: "envcode"
+            Location: "locationus"
+            Instance: "pve_kv_instance"
+            ResourceType: pve
