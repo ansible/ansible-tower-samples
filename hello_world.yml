@@ -11,4 +11,4 @@
         msg: "Hello World!"
     - name: Set dns account
       set_fact:
-        dns_account: "{{ mydict[Name] }}"
+        dns_account: "{{ mydict}}"
