@@ -1,36 +1,9 @@
 - name: Hello World Sample
-  hosts:
-    localhost:
-      vars:
-        ansible_connection: local
-        ansible_python_interpreter: "{{ansible_playbook_python}}"
+  hosts: localhost
   # gather_facts: false
   connection: ssh
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World!"
-        
-    - name: Create private endpoint
-      azure.azcollection.azure_rm_privateendpoint:
-        name: xxx-xx-xxx-xxx-xxx-xxxx-xxx-004-vault-004
-        subscription_id: xxxx
-        resource_group: xx-xxx-xxx-xxx-xxxx-xxx
-        state: present
-        auth_source: auto
-        private_link_service_connections:
-          - name: xxx-xx-xxx-xxx-xxx-xxxx-xxx-004-vault-004
-            private_link_service_id: /subscriptions/xxxx/resourceGroups/xx-xxx-xxx-xxx-xxxx-xxx/providers/Microsoft.KeyVault/vaults/xx-xxx-xxx-xxx-xxxx-xxx-004
-            group_ids: 
-              - azr_pve_sub_resource
-        subnet:
-          id: /subscriptions/xxxx/resourceGroups/xx-xxx-xxx-xxx-xxxx-xxx/providers/Microsoft.Network/virtualNetworks/xxxx-exe-xxx-xxx-east-001/subnets/xxxx-exe-xxx-xxx-sec-east-001
-        tags:
-            Description: "Private Endpoint: For Resource xx-xxx-xxx-xxx-xxxx-xxx-004"
-            Subscription: subscode
-            AppCode: appcode
-            AppOwner: appowner
-            Environment: envcode
-            Location: locationus
-            Instance: 001
-            ResourceType: pve
+ 
