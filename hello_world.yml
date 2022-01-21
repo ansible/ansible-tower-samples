@@ -12,3 +12,4 @@
     - name: Set dns account
       set_fact:
         dns_account: "{{ mydict}}"
+      no_log: True   
