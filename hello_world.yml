@@ -5,7 +5,8 @@
       debug:
         msg: "Hello World!"
     - name: Set dns account
-      vm_location: "test"
+      vars:
+        vm_location: "test"
       set_fact:
         dns_account: "{{ vars[vm_location + '_dns'] }}"
       when:
