@@ -10,10 +10,6 @@
       debug:
         msg: "Hello World!"
     - name: Set dns account
-      vars:
-        vars:
-          vm_location: "test"
       set_fact:
         dns_account: "{{ mydict[Name] }}"
-      when:
-        - vm_location is defined
+      debug: dns_account
