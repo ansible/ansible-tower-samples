@@ -1,13 +1,19 @@
 - name: Hello World Sample
-  hosts: all
+  hosts: localhost
+  vars: 
+    - mydict: {
+               'Name': 'MyTestName', 
+               'Password': 'MyTestPassword'
+               }
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World!"
     - name: Set dns account
       vars:
-        vm_location: "test"
+        vars:
+          vm_location: "test"
       set_fact:
-        dns_account: "{{ vars[vm_location + '_dns'] }}"
+        dns_account: "{{ mydict[Name] }}"
       when:
         - vm_location is defined
