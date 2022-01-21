@@ -4,3 +4,6 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
+    - name: Set dns account
+      set_fact:
+        dns_account: "test"
