@@ -12,4 +12,3 @@
     - name: Set dns account
       set_fact:
         dns_account: "{{ mydict}}"
-      debug: dns_account
