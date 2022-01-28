@@ -9,7 +9,23 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
-    - name: Set dns account
-      set_fact:
-        dns_account: "{{ mydict}}"
-      no_log: True   
+    - name: Cisco troubleshoot
+      hosts: all
+      gather_facts: no
+
+      collections:
+        - cisco.ios
+        - ansible.netcommon
+        - ansible.utils
+        - cisco.iosxr
+      tasks:
+        - name: Run commands on cisco devices
+          cisco.ios.ios_command:
+            commands:
+            - show interface desc
+            - show ip int br
+          register: show_output
+
+        - name: Print command output
+          debug:
+            msg: "{{show_output.stdout}}"
