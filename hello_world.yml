@@ -1,9 +1,9 @@
-- name: Hello World Sample
-  hosts: localhost
-  tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+#- name: Hello World Sample
+#  hosts: localhost
+#  tasks:
+#    - name: Hello Message
+#      debug:
+#        msg: "Hello World!"
 - name: Cisco troubleshoot
   hosts: all
   gather_facts: no
