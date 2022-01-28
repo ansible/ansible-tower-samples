@@ -5,7 +5,7 @@
 #      debug:
 #        msg: "Hello World!"
 - name: Cisco troubleshoot
-  hosts: all
+  hosts: localhost
   gather_facts: no
 
   collections:
