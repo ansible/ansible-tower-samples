@@ -4,4 +4,8 @@ collections:
 - community.general
 #- ansible.windows
 #- community.vmware
-- azure.azcollection
+#- azure.azcollection
+- cisco.ios
+- ansible.netcommon
+- ansible.utils
+- cisco.iosxr
