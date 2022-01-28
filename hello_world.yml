@@ -9,23 +9,23 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
-    - name: Cisco troubleshoot
-      hosts: all
-      gather_facts: no
+- name: Cisco troubleshoot
+  hosts: all
+  gather_facts: no
 
-      collections:
-        - cisco.ios
-        - ansible.netcommon
-        - ansible.utils
-        - cisco.iosxr
-      tasks:
-        - name: Run commands on cisco devices
-          cisco.ios.ios_command:
-            commands:
-            - show interface desc
-            - show ip int br
-          register: show_output
+  collections:
+    - cisco.ios
+    - ansible.netcommon
+    - ansible.utils
+    - cisco.iosxr
+  tasks:
+    - name: Run commands on cisco devices
+      cisco.ios.ios_command:
+        commands:
+        - show interface desc
+        - show ip int br
+      register: show_output
 
-        - name: Print command output
-          debug:
-            msg: "{{show_output.stdout}}"
+    - name: Print command output
+      debug:
+        msg: "{{show_output.stdout}}"
