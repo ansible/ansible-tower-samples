@@ -1,10 +1,5 @@
 - name: Hello World Sample
   hosts: localhost
-  vars: 
-    - mydict: {
-               'Name': 'MyTestName', 
-               'Password': 'MyTestPassword'
-               }
   tasks:
     - name: Hello Message
       debug:
