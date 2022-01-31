@@ -1,26 +1,12 @@
-#- name: Hello World Sample
-#  hosts: localhost
-#  tasks:
-#    - name: Hello Message
-#      debug:
-#        msg: "Hello World!"
-- name: Cisco troubleshoot
+- name: Hello World Sample
   hosts: localhost
-  gather_facts: no
-
-  collections:
-    - cisco.ios
-    - ansible.netcommon
-    - ansible.utils
-    - cisco.iosxr
+  vars:
+    machine:
+      username: '{{ ansible_user }}'
+      password: '{{ anisble_password }}'
   tasks:
-    - name: Run commands on cisco devices
-      cisco.ios.ios_command:
-        commands:
-        - show interface desc
-        - show ip int br
-      register: show_output
-
-    - name: Print command output
+    - name: Hello Message
       debug:
-        msg: "{{show_output.stdout}}"
+        msg: "Hello World!"
+        msg: "test"
+
