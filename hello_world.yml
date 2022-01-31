@@ -8,5 +8,5 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
-        msg: "test"
+        var: machine
 
