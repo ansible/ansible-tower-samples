@@ -10,3 +10,6 @@
 #        msg: "Hello World!"
         var: machine_test
 
+    - name: Print all available facts
+      ansible.builtin.debug:
+        var: ansible_facts
