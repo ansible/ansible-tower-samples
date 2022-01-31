@@ -1,12 +1,12 @@
 - name: Hello World Sample
   hosts: localhost
   vars:
-    machine:
+    machine_test:
       username: '{{ ansible_user }}'
       password: '{{ anisble_password }}'
   tasks:
     - name: Hello Message
       debug:
 #        msg: "Hello World!"
-        var: machine
+        var: machine_test
 
