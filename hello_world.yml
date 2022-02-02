@@ -1,15 +1,30 @@
-- name: Hello World Sample
-  hosts: localhost
-  vars:
-    machine_test:
-      username: '{{ ansible_user }}'
-      password: '{{ anisble_password }}'
-  tasks:
-    - name: Hello Message
-      debug:
+# - name: Hello World Sample
+#  hosts: localhost
+#  vars:
+#    machine_test:
+#      username: '{{ ansible_user }}'
+#      password: '{{ anisble_password }}'
+#  tasks:
+#    - name: Hello Message
+#      debug:
 #        msg: "Hello World!"
-        var: machine_test
+- name: Cisco troubleshoot
+  hosts: all
+  gather_facts: no
 
-    - name: Print all available facts
-      ansible.builtin.debug:
-        var: ansible_facts
+  collections:
+    - cisco.ios
+    - ansible.netcommon
+    - ansible.utils
+    - cisco.iosxr
+  tasks:
+    - name: Run commands on cisco devices
+      cisco.ios.ios_command:
+        commands:
+        - show interface desc
+        - show ip int br
+      register: show_output
+      
+    - name: Print command output
+      debug:
+        msg: "{{show_output.stdout}}"
