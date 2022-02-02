@@ -10,6 +10,7 @@
 #        msg: "Hello World!"
 - name: My Test Playbook
   hosts: localhost
+  no_log: True 
   vars: 
     - mydict: {
                'Name': 'MyTestName', 
