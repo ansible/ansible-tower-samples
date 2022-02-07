@@ -1,23 +1,10 @@
-# - name: Hello World Sample
-#  hosts: localhost
-#  vars:
-#    machine_test:
-#      username: '{{ ansible_user }}'
-#      password: '{{ anisble_password }}'
-#  tasks:
-#    - name: Hello Message
-#      debug:
-#        msg: "Hello World!"
-- name: My Test Playbook
+ - name: Hello World Sample
   hosts: localhost
-  no_log: True 
-  vars: 
-    - mydict: {
-               'Name': 'MyTestName', 
-               'Password': 'MyTestPassword'
-               }
+  vars:
+    machine_test:
+      username: '{{ ansible_user }}'
+      password: '{{ anisble_password }}'
   tasks:
-    - name: Set dns account
-      set_fact:
-        dns_account: "{{ mydict}}"
-      no_log: True 
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
