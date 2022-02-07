@@ -1,6 +1,5 @@
- - name: Hello World Sample
-  hosts: localhost
-
+- name: Hello World Sample
+  hosts: all
   tasks:
     - name: Hello Message
       debug:
