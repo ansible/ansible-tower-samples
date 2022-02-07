@@ -1,9 +1,6 @@
  - name: Hello World Sample
   hosts: localhost
-  vars:
-    machine_test:
-      username: '{{ ansible_user }}'
-      password: '{{ anisble_password }}'
+
   tasks:
     - name: Hello Message
       debug:
