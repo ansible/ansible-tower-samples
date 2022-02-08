@@ -1,0 +1,12 @@
+- hosts: all
+  gather_facts: true
+  tasks:
+    - name: set a fact man
+      set_fact:
+        foo: "bar"
+        a:
+          b:
+            c:
+              - "a"
+              - "b"
+        cacheable: true
