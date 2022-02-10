@@ -2,10 +2,4 @@
 collections:
 # With just the collection name
 - community.general
-#- ansible.windows
-#- community.vmware
-#- azure.azcollection
-- cisco.ios
-- ansible.netcommon
-- ansible.utils
-- cisco.iosxr
+- oracle.oci
