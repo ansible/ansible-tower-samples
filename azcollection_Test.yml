@@ -1,4 +1,6 @@
- name: Create a windows web app with non-exist app service plan
+- name: Create a windows web app with non-exist app service plan
+  hosts: all
+  gather_facts: False
   azure_rm_webapp:
     resource_group: myResourceGroup
     name: myWinWebapp
