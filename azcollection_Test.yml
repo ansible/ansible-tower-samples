@@ -1,11 +1,13 @@
 - name: Create a windows web app with non-exist app service plan
   hosts: all
   gather_facts: False
-  azure_rm_webapp:
-    resource_group: myResourceGroup
-    name: myWinWebapp
-    plan:
-      resource_group: myAppServicePlan_rg
-      name: myAppServicePlan
-      is_linux: false
-      sku: S1
+  collections:
+    - azure.azcollection
+    - community.azure
+  tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
+    - name: Print all available facts
+      ansible.builtin.debug:
+        var: ansible_facts
