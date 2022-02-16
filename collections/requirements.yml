@@ -3,4 +3,5 @@ collections:
 # With just the collection name
 - community.general
 - oracle.oci
-- azure.azcollection
+- name: azure.azcollection
+  version: '1.6.0'
