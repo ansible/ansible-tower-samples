@@ -3,4 +3,4 @@ collections:
 # With just the collection name
 - community.general
 - oracle.oci
-# - azure.azcollections
+- azure.azcollections
