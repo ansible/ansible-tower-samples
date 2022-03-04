@@ -1,10 +1,10 @@
 - name: Hello World Sample
   hosts: all
-  gather_facts: True
+  gather_facts: False
   tasks:
     - name: Hello Message
       debug:
         msg: "Hello World!"
-    - name: Print all available facts
-      ansible.builtin.debug:
-        var: ansible_facts
+    - name: Debug env vars
+      debug:
+        msg: "'{{ lookup('env', 'HOME') }}' is the HOME environment variable."
