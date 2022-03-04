@@ -1,0 +1,10 @@
+- name: Hello World Sample
+  hosts: all
+  gather_facts: True
+  tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World!"
+    - name: Print all available facts
+      ansible.builtin.debug:
+        var: ansible_facts
