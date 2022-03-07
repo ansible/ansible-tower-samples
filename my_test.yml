@@ -19,7 +19,7 @@
         view: "{{ item[3].split(',') }}"
         name: "{{ item[0].split(',') }}.{{ item[1].split(',') }}"
         ipv4: 
-          address: "{{ item[2].split(',') }}"
+          - address: "{{ item[2].split(',') }}"
         state: present
         provider: "{{ nios_provider }}"
       loop: "{{ change_list_parsed }}"
