@@ -3,5 +3,4 @@ collections:
 # With just the collection name
 - community.general
 - oracle.oci
-- name: azure.azcollection
-  version: '1.6.0'
+- infoblox.nios_modules
