@@ -3,9 +3,9 @@
   vars:
     change_list: |- 
       name,suffix,ipv4,view
-      host1,corp,172.16.0.1,Internal,
-      host2,corp,172.16.0.2,Internal,
-      host3,corp,172.16.0.3,Internal,
+      host1,corp,172.16.0.1,Internal
+      host2,corp,172.16.0.2,Internal
+      host3,corp,172.16.0.3,Internal
     nios_provider: 
       host: localhost
       username: admin
