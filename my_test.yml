@@ -7,9 +7,9 @@
       host2,corp,172.16.0.2,Internal,
       host3,corp,172.16.0.3,Internal,
     nios_provider: 
-      host: "{{ nios_host }}"
-      username: "{{ nios_username }}"
-      password: "{{ nios_password }}"
+      host: localhost
+      username: admin
+      password: test
 
   tasks:
     - set_fact:
