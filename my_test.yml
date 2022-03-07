@@ -8,7 +8,7 @@
       host3,corp,172.16.0.3,Internal,
     nios_provider: 
       host: localhost
-      username: admin
+      username: test
       password: test
 
   tasks:
@@ -16,10 +16,10 @@
         change_list_parsed: "{{ change_list.split('\n') }}"
     - name: Configure a host record
       infoblox.nios_modules.nios_host_record:
-        view: "{{ item[3].split(',') }}"
-        name: "{{ item[0].split(',') }}.{{ item[1].split(',') }}"
+        view: "{{ item.split(',')[3] }}"
+        name: "{{ item.split(',')[0] }}.{{ item.split(',')[1] }}"
         ipv4: 
-          - address: "{{ item[2].split(',') }}"
+          - address: "{{ item.split(',')[2] }}"
         state: present
         provider: "{{ nios_provider }}"
       loop: "{{ change_list_parsed }}"
