@@ -1,63 +1,26 @@
-- name: This is a test
-  hosts: all
+- hosts: localhost
+  connection: local
+  vars:
+    change_list: |- 
+      name,suffix,ipv4,view
+      host1,corp,172.16.0.1,Internal,
+      host2,corp,172.16.0.2,Internal,
+      host3,corp,172.16.0.3,Internal,
+    nios_provider: 
+      host: "{{ nios_host }}"
+      username: "{{ nios_username }}"
+      password: "{{ nios_password }}"
+
   tasks:
-    - name: Hello Message 1
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 2
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 3
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 4
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 5
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 6
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 7
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 8
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 9
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 10
-      debug:
-        msg: "Hello World"   
-    - name: Hello Message 1
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 2
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 3
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 4
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 5
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 6
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 7
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 8
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 9
-      debug:
-        msg: "Hello World"
-    - name: Hello Message 10
-      debug:
-        msg: "Hello World"   
+    - set_fact:
+        change_list_parsed: "{{ change_list.split('\n') }}"
+    - name: Configure a host record
+      infoblox.nios_modules.nios_host_record:
+        view: "{{ item.split(',')[3] }}"
+        name: "{{ item.split(',')[0] }}.{{ item.split(',')[1] }}"
+        ipv4: 
+          address: "{{ item.split(',')[2] }}"
+        state: present
+        provider: "{{ nios_provider }}"
+      loop: "{{ change_list_parsed }}"
+      #when: "item.split(',')[0] == 'A'"
