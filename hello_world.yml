@@ -10,7 +10,3 @@
     - name: Say Hello
       debug:
         msg: "Hello World!"
-        
-    - name: Induce an exception to see what happens
-      ansible.builtin.ping:
-        data: crash
