@@ -5,3 +5,8 @@
     - name: Hello Message
       debug:
         msg: "Hello World!"
+    - name: Example from an Ansible Playbook
+      ansible.builtin.ping:
+    - name: Induce an exception to see what happens
+      ansible.builtin.ping:
+        data: crash
