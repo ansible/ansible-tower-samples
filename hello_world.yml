@@ -4,6 +4,8 @@
   tasks:
     - name: Ping hosts
       ansible.builtin.ping:
+      vars:
+        ansible_command_timeout: 2
     
     - name: Say Hello
       debug:
