@@ -2,11 +2,13 @@
   hosts: all
   gather_facts: False
   tasks:
-    - name: Hello Message
+    - name: Ping hosts
+      ansible.builtin.ping:
+    
+    - name: Say Hello
       debug:
         msg: "Hello World!"
-    - name: Example from an Ansible Playbook
-      ansible.builtin.ping:
+        
     - name: Induce an exception to see what happens
       ansible.builtin.ping:
         data: crash
