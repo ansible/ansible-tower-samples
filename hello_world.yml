@@ -1,5 +1,5 @@
 - name: Hello World Sample
-  hosts: all
+  hosts: localhost
   gather_facts: True
   tasks:   
     - name: Say Hello
