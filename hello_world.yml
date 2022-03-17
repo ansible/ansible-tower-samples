@@ -1,6 +1,6 @@
 - name: Hello World Sample
   hosts: all
-  gather_facts: False
+  gather_facts: True
   tasks:
     - name: Ping hosts
       ansible.builtin.ping:
