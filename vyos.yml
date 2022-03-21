@@ -1,0 +1,10 @@
+---
+- name: backup vyos
+  hosts: ec2-18-191-57-251.us-east-2.compute.amazonaws.com
+  gather_facts: no
+  tasks:
+  - name: configurable backup path
+    vyos.vyos.vyos_config:
+      backup: yes
+      backup_options:
+        dir_path: /home/ansible/vyos-bakup/
