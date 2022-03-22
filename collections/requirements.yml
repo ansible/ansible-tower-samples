@@ -4,3 +4,4 @@ collections:
 - community.general
 - oracle.oci
 - infoblox.nios_modules
+- myfirst.test_collection
