@@ -1,0 +1,63 @@
+---
+- name: Try Fixes for Unwanted Boolean Conversions
+  hosts:
+    - localhost
+  vars:
+    var_0: NO
+    var_1: "NO"
+    var_2: "YES"
+  tasks:
+### IMPORT VAR FILES FROM THE PLAYBOOK FILES
+    # check for string present in dictionary
+    - name: Test variable resolution
+      debug:
+        msg:
+         - "Bare Variable"
+         - "{var_0} = {{var_0}} using double quotes"
+         - "{var_1} = {{var_1}} using double quotes"
+         - "{var_2} = {{var_2}} using double quotes"
+         - '{var_0} = {{var_0}} using single quotes'
+         - '{var_1} = {{var_1}} using single quotes'
+         - '{var_2} = {{var_2}} using single quotes'
+         - ""
+         - "With Filter |string"
+         - "{var_0|string} = {{var_0 | string}} using double quotes"
+         - "{var_1|string} = {{var_1 | string}} using double quotes"
+         - "{var_2|string} = {{var_2 | string}} using double quotes"
+         - "{var_0|string} = {{var_0 | string}} using single quotes"
+         - "{var_1|string} = {{var_1 | string}} using single quotes"
+         - "{var_2|string} = {{var_2 | string}} using single quotes"
+         - ""
+    - name: Try set_fact
+      set_fact:
+        "NEW_VAR_0": >
+          "{{var_0}}"
+    - name: Try set_fact
+      set_fact:
+        "NEW_VAR_1": >
+          "{{var_1}}"
+    - name: Try set_fact
+      set_fact:
+        "NEW_VAR_2": >
+          "{{var_2}}"
+    - name: Try set_fact
+      set_fact:
+        "NEW_VAR_3": >
+          {{var_2}}
+    - name: Try set_fact
+      set_fact:
+        "NEW_VAR_4": >-
+          {{var_2}}
+    - name: Show the new vars in use
+      debug:
+        msg:
+         - "{NEW_VAR_0} = {{NEW_VAR_0}} using double quotes"
+         - "{NEW_VAR_1} = {{NEW_VAR_1}} using double quotes"
+         - "{NEW_VAR_2} = {{NEW_VAR_2}} using double quotes"
+         - "{NEW_VAR_3} = {{NEW_VAR_3}} using double quotes"
+         - "{NEW_VAR_4} = {{NEW_VAR_4}} using double quotes"
+         - '{NEW_VAR_0} = {{NEW_VAR_0}} using single quotes'
+         - '{NEW_VAR_1} = {{NEW_VAR_1}} using single quotes'
+         - '{NEW_VAR_2} = {{NEW_VAR_2}} using single quotes'
+         - '{NEW_VAR_3} = {{NEW_VAR_3}} using single quotes'
+         - '{NEW_VAR_4} = {{NEW_VAR_4}} using single quotes'
