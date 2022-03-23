@@ -3,7 +3,7 @@
   hosts:
     - localhost
   vars:
-    var_0: NO
+    var_0: off
     var_1: "NO"
     var_2: "YES"
   tasks:
