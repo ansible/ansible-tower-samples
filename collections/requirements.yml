@@ -5,3 +5,4 @@ collections:
 - oracle.oci
 - infoblox.nios_modules
 #- myfirst.test_collection
+- vyos.vyos
