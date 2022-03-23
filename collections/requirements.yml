@@ -2,7 +2,7 @@
 collections:
 # With just the collection name
 - community.general
-- oracle.oci
-- infoblox.nios_modules
+#- oracle.oci
+#- infoblox.nios_modules
 #- myfirst.test_collection
-- vyos.vyos
+#- vyos.vyos
