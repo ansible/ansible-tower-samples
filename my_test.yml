@@ -1,26 +1,10 @@
-- hosts: localhost
+- name: backup vyos
+  hosts: localhost
   connection: local
-  vars:
-    change_list: |- 
-      name,suffix,ipv4,view
-      host1,corp,172.16.0.1,Internal,
-      host2,corp,172.16.0.2,Internal,
-      host3,corp,172.16.0.3,Internal,
-    nios_provider: 
-      host: localhost
-      username: test
-      password: test
-
+  gather_facts: no
   tasks:
-    - set_fact:
-        change_list_parsed: "{{ change_list.split('\n') }}"
-    - name: Configure a host record
-      infoblox.nios_modules.nios_host_record:
-        view: "{{ item.split(',')[3] }}"
-        name: "{{ item.split(',')[0] }}.{{ item.split(',')[1] }}"
-        ipv4: 
-          - address: "{{ item.split(',')[2] }}"
-        state: present
-        provider: "{{ nios_provider }}"
-      loop: "{{ change_list_parsed }}"
-      #when: "item.split(',')[0] == 'A'"
+  - name: configurable backup path
+    vyos.vyos.vyos_config:
+      backup: yes
+      backup_options:
+        dir_path: /home/ansible/vyos-bakup/
