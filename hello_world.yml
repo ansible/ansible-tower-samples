@@ -5,3 +5,14 @@
     - name: Say Hello
       debug:
         msg: "Hello World!"
+    - name: "Query lockbox for secret - rancid"
+      lockbox:
+        action: read
+        cust_id: neteng
+        device: service account - rancid
+        user_name: rancid
+      register: rancid_password
+      no_log: yes
+      environment:
+        PYTHONPATH: /opt/netops-lib
+      tags: always
