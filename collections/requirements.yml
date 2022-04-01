@@ -6,4 +6,4 @@ collections:
 #- infoblox.nios_modules
 #- myfirst.test_collection
 #- vyos.vyos
-- community.vmware
+#- community.vmware
