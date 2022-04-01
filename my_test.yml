@@ -1,10 +1,8 @@
-- name: backup vyos
+- name: Ansible Automation Platform Backup
   hosts: localhost
-  connection: local
   gather_facts: no
+  
   tasks:
-  - name: configurable backup path
-    vyos.vyos.vyos_config:
-      backup: yes
-      backup_options:
-        dir_path: /home/ansible/vyos-bakup/
+     - name: Nightly Automation Platform Backups
+       become: true
+       command: /tmp/stupid/ansible-tower-setup-bundle-3.8.4-1/setup.sh -e backup_dest=/tmp/ -b
