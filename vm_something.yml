@@ -18,7 +18,7 @@
         #password: "{{ vcenter_password }}"
         #validate_certs: False
         datacenter: "{{ dc|default('Bretz') }}"
-        #name: "{{ target_host }}"
+        name: "{{ target_host }}"
       delegate_to: localhost
       register: vm_disk_info
 
