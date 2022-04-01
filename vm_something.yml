@@ -1,1 +1,26 @@
-vcenter_host
+- name: Hello World Sample
+  hosts: localhost
+  gather_facts: True
+  vars:
+    vcenter_host: "vcenter_host"
+    vcenter_username: "vcenter_username"
+    vcenter_password: "vcenter_password"
+    dc: "dc"
+    target_host: "target_host"
+  tasks:   
+    - name: Say Hello
+      debug:
+        msg: "Hello World!"
+    - name: get VM info
+      vmware_guest_disk_facts:
+        hostname: "{{ vcenter_host }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: False
+        datacenter: "{{ dc|default('Bretz') }}"
+        name: "{{ target_host }}"
+      delegate_to: localhost
+      register: vm_disk_info
+
+    - debug:
+        msg: "{{vm_disk_info}}"
