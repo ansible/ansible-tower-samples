@@ -5,4 +5,4 @@
   tasks:
      - name: Nightly Automation Platform Backups
        #become: true
-       command: /tmp/stupid/ansible-tower-setup-bundle-3.8.4-1/.setup.sh -e "backup_dest=/tmp/stupid/ansible-tower-setup-bundle-3.8.4-1/" -b
+       command: /tmp/stupid/ansible-tower-setup-bundle-3.8.4-1/.setup.sh -e /"backup_dest=/tmp/stupid/ansible-tower-setup-bundle-3.8.4-1//" -b
