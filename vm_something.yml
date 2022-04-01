@@ -13,12 +13,12 @@
         msg: "Hello World!"
     - name: get VM info
       vmware_guest_disk_facts:
-        hostname: "{{ vcenter_host }}"
-        username: "{{ vcenter_username }}"
-        password: "{{ vcenter_password }}"
-        validate_certs: False
+        #hostname: "{{ vcenter_host }}"
+        #username: "{{ vcenter_username }}"
+        #password: "{{ vcenter_password }}"
+        #validate_certs: False
         datacenter: "{{ dc|default('Bretz') }}"
-        name: "{{ target_host }}"
+        #name: "{{ target_host }}"
       delegate_to: localhost
       register: vm_disk_info
 
