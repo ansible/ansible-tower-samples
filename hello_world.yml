@@ -5,11 +5,3 @@
     - name: Say Hello
       debug:
         msg: "Hello World!"
-    - name: run the new module
-      lockbox:
-        name: 'hello'
-      #new: true
-      register: testout
-    - name: dump test output
-      debug:
-        msg: '{{ testout }}'
