@@ -5,16 +5,8 @@
     echo_list:
       - "one"
       - "two"
-      - "three"
-
-      
-  vars_files:
-    - ../vault/ansible_AD_user.yml  # our vault file
-    
+      - "three"    
   tasks:
-#################################################
-      # - meta: end_play
-
       - debug: 
           msg:
             - "{{ item }}"
@@ -26,7 +18,5 @@
         register: shell_echo 
       - debug:
           msg: 
-            # - "{{ shell_echo }}"
             - "{{ shell_echo  | json_query('results[*].stdout') }}"
-
       - meta: end_play
