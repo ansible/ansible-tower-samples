@@ -1,0 +1,32 @@
+- name: Testing
+  hosts: localhost
+  gather_facts: no
+  vars:
+    echo_list:
+      - "one"
+      - "two"
+      - "three"
+
+      
+  vars_files:
+    - ../vault/ansible_AD_user.yml  # our vault file
+    
+  tasks:
+#################################################
+      # - meta: end_play
+
+      - debug: 
+          msg:
+            - "{{ item }}"
+        loop: "{{ echo_list }}"
+
+      - shell: | 
+          echo "{{ item }}"
+        loop: "{{ echo_list }}"
+        register: shell_echo 
+      - debug:
+          msg: 
+            # - "{{ shell_echo }}"
+            - "{{ shell_echo  | json_query('results[*].stdout') }}"
+
+      - meta: end_play
