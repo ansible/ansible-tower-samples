@@ -1,6 +1,6 @@
 ---
 - name: test 
-  hosts: test 
+  hosts: localhost 
   collections:
     - community.general 
   tasks:
