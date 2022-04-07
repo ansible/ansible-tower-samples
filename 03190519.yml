@@ -1,23 +1,8 @@
-- hosts: localhost
-  collections: 
-    - community.general
-  gather_facts: no
-  vars:
-    echo_list:
-      - "one"
-      - "two"
-      - "three"
+---
+- name: test 
+  hosts: test 
+  collections:
+    - community.general 
   tasks:
     - debug: 
-        msg:
-          - "{{ item }}"
-      loop: "{{ echo_list }}"
-
-    - shell: | 
-        echo "{{ item }}"
-      loop: "{{ echo_list }}"
-      register: shell_echo 
-    - debug:
-        msg: 
-          - "{{ shell_echo  | json_query('results[*].stdout') }}"
-    - meta: end_play
+         msg: "{{ something | json_query() }}"
