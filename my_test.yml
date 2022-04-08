@@ -1,14 +1,22 @@
-- name: Hello World Sample
-  hosts: localhost
-  gather_facts: False
-  collections:
-    - awx.awx
-  #include_vars: /etc/ansible/vault.yml  
-  tasks:
-    - name: Set the value of AWX_ISOLATION_SHOW_PATHS
-      settings:
-        name: "AWX_ISOLATION_SHOW_PATHS"
-        value: "'/etc/ansible/'"
-      register: testing_settings
-    - name: vault it
-      include_vars: /etc/ansible/vault.yml
+#- name: Hello World Sample
+#  hosts: localhost
+#  gather_facts: False
+#  collections:
+#    - awx.awx
+#  #include_vars: /etc/ansible/vault.yml  
+#  tasks:
+#    - name: Set the value of AWX_ISOLATION_SHOW_PATHS
+#      settings:
+#        name: "AWX_ISOLATION_SHOW_PATHS"
+#        value: "'/etc/ansible/'"
+#      register: testing_settings
+#    - name: vault it
+#      include_vars: /etc/ansible/vault.yml
+- hosts: localhost
+  connection: local
+  tasks: 
+    - name: shell
+      shell: echo hello world
+    - name: 
+      include_vars:
+        file: /etc/ansible/ansible.cfg
