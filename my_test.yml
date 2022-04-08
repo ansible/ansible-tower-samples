@@ -5,4 +5,7 @@
 #    ansible_python_interpreter: '{{ ansible_playbook_python }}'
   tasks:
     - name: Gather variables
+    settings:
+      name: "AWX_ISOLATION_SHOW_PATHS"
+      value: "'/etc/ansible/'"
       include_vars: /etc/ansible/vault.yml
