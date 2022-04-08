@@ -7,9 +7,9 @@
 #    value: "'/etc/ansible'"
 #  register: testing_settings
 - name: Set the value of AWX_ISOLATION_SHOW_PATHS
-  settings:
+  awx.awx.settings:
     name: "AWX_ISOLATION_SHOW_PATHS"
-    value: "'/etc/ansible/'"
+    value: "'/etc/ansible/','/tmp'"
   register: testing_settings
   tasks:
       include_vars: /etc/ansible/vault.yml
