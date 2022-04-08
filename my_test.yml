@@ -12,4 +12,4 @@
     value: "'/etc/ansible/','/tmp'"
   register: testing_settings
   tasks:
-      include_vars: /etc/ansible/vault.yml
+    include_vars: /etc/ansible/vault.yml
