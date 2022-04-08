@@ -7,7 +7,7 @@
 #    value: "'/etc/ansible'"
 #  register: testing_settings
 - name: Set the value of AWX_ISOLATION_SHOW_PATHS
-  awx.awx.settings:
+  settings:
     name: "AWX_ISOLATION_SHOW_PATHS"
     value: "'/etc/ansible/','/tmp'"
   register: testing_settings
