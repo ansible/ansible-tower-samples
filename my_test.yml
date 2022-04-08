@@ -11,6 +11,8 @@
 #    - name: Say Hello
 #      include_vars: /etc/ansible/vault.yml
 - name: Set the value of AWX_ISOLATION_SHOW_PATHS
+  hosts: localhost
+  gather_facts: no
   settings:
     name: "AWX_ISOLATION_SHOW_PATHS"
     value: "'/etc/ansible/'"
