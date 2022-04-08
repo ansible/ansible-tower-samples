@@ -1,6 +1,8 @@
 - name: My Test
   hosts: localhost
   gather_facts: no
+  collections:
+    - awx.awx
   settings:
     name: "AWX_ISOLATION_SHOW_PATHS"
     value: "'/etc/ansible/'"
