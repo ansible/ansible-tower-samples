@@ -1,12 +1,17 @@
-- name: My Test
-  hosts: localhost
-  gather_facts: no
-  collections:
-    - awx.awx  
-  tasks:
-    awx.awx.settings:
-      name: "AWX_ISOLATION_SHOW_PATHS"
-      value: "'/etc/ansible/'"
-    register: testing_settings
-    - name: Say Hello
-      include_vars: /etc/ansible/vault.yml
+#- name: My Test
+#  hosts: localhost
+#  gather_facts: no
+#  collections:
+#    - awx.awx  
+#  tasks:
+#    awx.awx.settings:
+#      name: "AWX_ISOLATION_SHOW_PATHS"
+#      value: "'/etc/ansible/'"
+#    register: testing_settings
+#    - name: Say Hello
+#      include_vars: /etc/ansible/vault.yml
+- name: Set the value of AWX_ISOLATION_SHOW_PATHS
+  settings:
+    name: "AWX_ISOLATION_SHOW_PATHS"
+    value: "'/etc/ansible/'"
+  register: testing_settings
