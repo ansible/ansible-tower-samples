@@ -10,5 +10,5 @@
         name: "AWX_ISOLATION_SHOW_PATHS"
         value: "'/etc/ansible/'"
       register: testing_settings
-    - name: vault it
-      include_vars: /etc/ansible/vault.yml
+#    - name: vault it
+#      include_vars: /etc/ansible/vault.yml
