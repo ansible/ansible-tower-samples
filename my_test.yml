@@ -4,8 +4,5 @@
 #  vars:
 #    ansible_python_interpreter: '{{ ansible_playbook_python }}'
   tasks:
-    - name: Get py version
-      command: /usr/bin/python3 --version
-
-    - name: execute parser
-      local_action: command /usr/bin/python3 /tmp/transform.py -i /tmp/response.json -o /tmp/parsedPolicy.csv
+    - name: Gather variables
+      include_vars: /etc/ansible/vault.yml
