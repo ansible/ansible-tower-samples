@@ -2,6 +2,7 @@
 collections:
 # With just the collection name
 - community.general
+- awx.awx
 #- oracle.oci
 #- infoblox.nios_modules
 #- myfirst.test_collection
