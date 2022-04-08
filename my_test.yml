@@ -10,10 +10,16 @@
 #    register: testing_settings
 #    - name: Say Hello
 #      include_vars: /etc/ansible/vault.yml
-- name: Set the value of AWX_ISOLATION_SHOW_PATHS
+
+- name: Hello World Sample
   hosts: localhost
-  gather_facts: no
-  settings:
-    name: "AWX_ISOLATION_SHOW_PATHS"
-    value: "'/etc/ansible/'"
-  register: testing_settings
+  gather_facts: True
+  tasks:   
+    - name: Say Hello
+      debug:
+        msg: "Hello World!"
+    - name: Set the value of AWX_ISOLATION_SHOW_PATHS
+      settings:
+        name: "AWX_ISOLATION_SHOW_PATHS"
+        value: "'/etc/ansible/'"
+      register: testing_settings
