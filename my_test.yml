@@ -13,11 +13,13 @@
 
 - name: Hello World Sample
   hosts: localhost
-  gather_facts: True
+  gather_facts: False
+  collections:
+    - awx.awx
   tasks:   
-    - name: Say Hello
-      debug:
-        msg: "Hello World!"
+ #   - name: Say Hello
+ #     debug:
+ #       msg: "Hello World!"
     - name: Set the value of AWX_ISOLATION_SHOW_PATHS
       settings:
         name: "AWX_ISOLATION_SHOW_PATHS"
