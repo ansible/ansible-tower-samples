@@ -22,4 +22,5 @@
         name: "AWX_ISOLATION_SHOW_PATHS"
         value: "'/etc/ansible/'"
       register: testing_settings
+    - name: I like to use it use it
       include_vars: /etc/ansible/vault.yml
