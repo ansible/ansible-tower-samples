@@ -2,11 +2,11 @@
   hosts: localhost
   gather_facts: no
   collections:
-    - awx.awx
-  awx.awx.settings:
-    name: "AWX_ISOLATION_SHOW_PATHS"
-    value: "'/etc/ansible/'"
-  register: testing_settings
+    - awx.awx  
   tasks:
+    awx.awx.settings:
+      name: "AWX_ISOLATION_SHOW_PATHS"
+      value: "'/etc/ansible/'"
+    register: testing_settings
     - name: Say Hello
       include_vars: /etc/ansible/vault.yml
