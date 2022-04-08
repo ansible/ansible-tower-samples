@@ -1,11 +1,15 @@
 - name: My Test
   hosts: localhost
   gather_facts: no
-#  vars:
-#    ansible_python_interpreter: '{{ ansible_playbook_python }}'
+#- name: Set the value of AWX_ISOLATION_BASE_PATH
+#  settings:
+#    name: AWX_ISOLATION_BASE_PATH
+#    value: "'/etc/ansible/'"
+#  register: testing_settings
+- name: Set the value of AWX_ISOLATION_SHOW_PATHS
+  settings:
+    name: "AWX_ISOLATION_SHOW_PATHS"
+    value: "'/etc/ansible/'"
+  register: testing_settings
   tasks:
-    - name: Gather variables
-    settings:
-      name: "AWX_ISOLATION_SHOW_PATHS"
-      value: "'/etc/ansible/'"
       include_vars: /etc/ansible/vault.yml
