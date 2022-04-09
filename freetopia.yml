@@ -1,0 +1,8 @@
+---
+- name: Playbook to configure IPA replicas (tier1)
+  hosts: localhost
+  become: true
+
+  roles:
+  - role: freeipa.ansible_freeipa.ipareplica
+    state: present
