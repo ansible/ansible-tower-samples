@@ -2,9 +2,10 @@
 collections:
 # With just the collection name
 #- community.general
-- awx.awx
+#- awx.awx
 #- oracle.oci
 #- infoblox.nios_modules
 #- myfirst.test_collection
 #- vyos.vyos
 #- community.vmware
+name: 'https://github.com/mkayontour/icinga2_ansible_collection/releases/download/0.1.0/icinga2-icinga2_collection-0.1.0.tar.gz'
