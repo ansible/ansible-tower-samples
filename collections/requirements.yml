@@ -8,4 +8,4 @@ collections:
 #- myfirst.test_collection
 #- vyos.vyos
 #- community.vmware
-name: 'https://github.com/jbird2021/ansible-tower-samples/blob/master/freeipa-ansible_freeipa-1.6.2.tar.gz'
+- name: 'https://github.com/jbird2021/ansible-tower-samples/blob/master/freeipa-ansible_freeipa-1.6.2.tar.gz'
