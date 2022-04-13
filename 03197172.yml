@@ -1,0 +1,29 @@
+---
+- name: Windows Engineering Package Testing.
+  hosts: all
+  gather_facts: no
+  vars:
+    separator: '\'
+    software_source: "{{ source_path }}"
+    software_dest: "{{ destination_path }}"
+  tasks:
+     - name: Test the server connectivity.
+       win_ping: 
+       register: ping_result
+
+#     - name: Copy the Software dump to the desired location.
+#       win_shell: Copy-Item "{{ software_source }}" "{{ software_dest }}"
+#       become: yes
+#       become_method: runas
+#       become_user: NORTHAMERICA\satheesa
+#       vars:
+#         ansible_become_password: "S@nt@123"
+    
+     - name: Set fact
+       set_fact:
+         result: "{{ destination_path }}{{ separator }}{{ software_source.split(separator)[-1] }}"
+
+        
+     - name: Installation Directory
+       debug:
+         msg: "{{ result }}"
