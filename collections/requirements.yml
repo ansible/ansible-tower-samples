@@ -1,7 +1,7 @@
 ---
 collections:
 # With just the collection name
-#- community.general
+ - community.general
 #- awx.awx
 #- oracle.oci
 #- infoblox.nios_modules
