@@ -3,7 +3,7 @@
   tasks: 
   - name: Pause for 5 minutes to build app cache
     pause:
-      minutes: 1
+      minutes: 5
     register: csarDdeploySvs
   - name: Check sync status
     become: yes
