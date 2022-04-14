@@ -7,7 +7,7 @@
      - name: Check sync status
        become: yes
        async_status:
-         jid: "{{ csarDdeploySvs.ansible_job_id }}"
+         jid: 138
        register: async_poll_results
        until: async_poll_results.finished
        retries: 300
