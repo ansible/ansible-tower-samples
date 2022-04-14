@@ -7,7 +7,7 @@
      - name: Check sync status
        become: yes
        async_status:
-         jid: 138
+         jid: "/root/.ansible_async"
        register: async_poll_results
        until: async_poll_results.finished
        retries: 300
