@@ -1,18 +1,19 @@
 - name: Hello World Sample
   hosts: localhost
   tasks: 
-  #  - name: Pause for 5 minutes to build app cache
-  #    pause:
-  #      minutes: 1
-     - name: Check sync status
-       become: yes
-       async_status:
-         jid: "/root/.ansible_async"
-       register: async_poll_results
-       until: async_poll_results.finished
-       retries: 300
-       poll: 60
-       delay: 30
-       delegate_to: localhost
-       vars:
-         ansible_async_dir: /home/runner/.ansible_async
+  - name: Pause for 5 minutes to build app cache
+     pause:
+       minutes: 1
+     register: csarDdeploySvs
+   - name: Check sync status
+     become: yes
+     async_status:
+       jid: "{{ csarDdeploySvs.ansible_job_id }}"
+     register: async_poll_results
+     until: async_poll_results.finished
+     retries: 300
+     poll: 60
+     delay: 30
+     delegate_to: localhost
+     vars:
+       ansible_async_dir: /home/runner/.ansible_async
