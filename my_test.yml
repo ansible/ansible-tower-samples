@@ -1,7 +1,6 @@
 - name: Hello World Sample
-- hosts: localhost
-  connection: local
+  hosts: localhost
   tasks: 
     - name: Pause for 5 minutes to build app cache
       pause:
-        minutes: 5
+        minutes: 1
