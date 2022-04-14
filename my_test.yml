@@ -1,9 +1,9 @@
 - name: Hello World Sample
   hosts: localhost
   tasks: 
-    - name: Pause for 5 minutes to build app cache
-      pause:
-        minutes: 1
+  #  - name: Pause for 5 minutes to build app cache
+  #    pause:
+  #      minutes: 1
      - name: Check sync status
        become: yes
        async_status:
