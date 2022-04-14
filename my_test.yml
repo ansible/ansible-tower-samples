@@ -1,8 +1,8 @@
 - name: Hello World Sample
   hosts: localhost
   tasks: 
-  - name: Pause for 5 minutes to build app cache
-    shell: sleep 5m
+  - name: Pause for 3 minutes to build app cache
+    shell: sleep 3m
     register: csarDdeploySvs
     async: 5000
     poll: 0 
