@@ -2,7 +2,7 @@
   hosts: localhost
   tasks: 
   - name: Pause for 5 minutes to build app cache
-    shell: sleep 5000
+    shell: sleep 5m
     register: csarDdeploySvs
   - name: Check sync status
     become: yes
