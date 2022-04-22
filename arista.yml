@@ -3,8 +3,8 @@
   gather_facts: false
   vars:
     ansible_network_os: arista.eos.eos
-    ansible_connection: cli
-    ansible_network_cli_ssh_type: libssh
+   # ansible_connection: cli
+   # ansible_network_cli_ssh_type: libssh
 
   tasks:
   - name: use eos_command module
