@@ -1,6 +1,6 @@
 - name: gather EOS facts
-  hosts: all
-  gather_facts: true
+  hosts: 18.223.160.74
+  gather_facts: false
   vars:
     ansible_network_os: arista.eos.eos
     ansible_connection: httpapi
