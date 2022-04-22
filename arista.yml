@@ -1,0 +1,13 @@
+- name: gather EOS facts
+  hosts: all
+  gather_facts: true
+  vars:
+    ansible_network_os: arista.eos.eos
+    ansible_connection: httpapi
+    ansible_network_cli_ssh_type: libssh
+
+  tasks:
+  - name: use eos_command module
+    arista.eos.eos_command:
+      commands: show version 
+    register: command_output
