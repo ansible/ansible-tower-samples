@@ -3,7 +3,7 @@
   gather_facts: false
   vars:
     ansible_network_os: arista.eos.eos
-    ansible_connection: ssh
+    ansible_connection: cli
     ansible_network_cli_ssh_type: libssh
 
   tasks:
