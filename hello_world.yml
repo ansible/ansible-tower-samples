@@ -7,7 +7,7 @@
         msg: "Hello World!"
     - name: Copy a folder
       copy:
-        src: /test
-        dest: /test2
+        src: /tmp/test/
+        dest: /tmp/test2/
         #remote_src: yes
 
