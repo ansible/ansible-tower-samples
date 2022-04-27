@@ -1,7 +1,13 @@
 - name: Hello World Sample
-  hosts: all
+  hosts: localhost
   gather_facts: True
   tasks:   
     - name: Say Hello
       debug:
         msg: "Hello World!"
+    - name: Copy a "sudoers" file on the remote machine for editing
+      copy:
+        src: /etc/sudoers
+        dest: /etc/sudoers.edit
+        remote_src: yes
+        validate: /usr/sbin/visudo -csf %s
