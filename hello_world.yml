@@ -9,5 +9,5 @@
       copy:
         src: /tmp/test/
         dest: /tmp/test2/
-        remote_src: yes
+        #remote_src: yes
 
