@@ -5,9 +5,9 @@
     - name: Say Hello
       debug:
         msg: "Hello World!"
-    - name: Copy a "sudoers" file on the remote machine for editing
+    - name: Copy a folder
       copy:
-        src: /etc/sudoers
-        dest: /etc/sudoers.edit
-        remote_src: yes
-        validate: /usr/sbin/visudo -csf %s
+        src: /test
+        dest: /test2
+        #remote_src: yes
+
