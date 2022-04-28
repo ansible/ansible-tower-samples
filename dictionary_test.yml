@@ -8,7 +8,10 @@
     dedicated_app_config:
       WEBSITES_PORT: "9080"
       WEBSITE_VNET_ROUTE_ALL: "1"
-  tasks:  
+  tasks:
+    - name: change it
+      set_fact:
+        app_config: "{{ app_config| items2dict }}"
     - name: "Combine dictionaries."
       ansible.builtin.debug:
         msg: "{{ app_config | combine(dedicated_app_config) }}"
