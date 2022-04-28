@@ -4,16 +4,12 @@
   connection: "local"
   gather_facts: false
   vars:
-    app_config: 
-      - "{{ test1 }}"
-      - "{{ test2 }}"
+    app_config: "{{ app_config }}"
     dedicated_app_config:
       WEBSITES_PORT: "9080"
       WEBSITE_VNET_ROUTE_ALL: "1"
+
   tasks:
-    - name: change it
-      set_fact:
-        app_config: "{{ app_config| items2dict }}"
     - name: "Combine dictionaries."
       ansible.builtin.debug:
         msg: "{{ app_config | combine(dedicated_app_config) }}"
