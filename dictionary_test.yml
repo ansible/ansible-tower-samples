@@ -24,7 +24,7 @@
       when: "app_config is string"
 
     - name: "Convert input to appropriate type."
-      ansible.builtin.set_fact:
+      set_fact:
         app_config: "{{ app_config | from_json }}"
       when: "app_config is string"
 
@@ -32,10 +32,7 @@
       ansible.builtin.debug:
         msg: "{{ app_config }}"
 
-    - name: "Display type."
-      ansible.builtin.debug:
-        msg: "{{ app_config | type_debug }}"
-        
+
         
         
     - name: "Combine dictionaries."
