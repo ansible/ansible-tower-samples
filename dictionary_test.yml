@@ -5,6 +5,7 @@
   gather_facts: false
   vars:
     app_config:
+    app_config_dict: "{{ app_config:splitlines()|map('from_yaml')|list }}"
     dedicated_app_config:
       WEBSITES_PORT: "9080"
       WEBSITE_VNET_ROUTE_ALL: "1"
@@ -65,4 +66,4 @@
         
     - name: "Combine dictionaries."
       ansible.builtin.debug:
-        msg: "{{ app_config | combine(dedicated_app_config) }}"
+        msg: "{{ app_config_dict | combine(dedicated_app_config) }}"
