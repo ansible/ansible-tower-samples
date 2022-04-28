@@ -36,6 +36,33 @@
       ansible.builtin.debug:
         msg: "{{ app_config | type_debug }}"
 
+
+    - name: "Display value2."
+      ansible.builtin.debug:
+        msg: "{{ dedicated_app_config }}"
+
+    - name: "Display type2."
+      ansible.builtin.debug:
+        msg: "{{ dedicated_app_config | type_debug }}"
+
+    - name: "Display value from json2."
+      ansible.builtin.debug:
+        msg: "{{ dedicated_app_config | from_json }}"
+      when: "app_config is string"
+
+    - name: "Convert input to appropriate type2."
+      ansible.builtin.set_fact:
+        app_config: "{{ dedicated_app_config | from_json }}"
+      when: "app_config is string"
+
+    - name: "Display value2."
+      ansible.builtin.debug:
+        msg: "{{ dedicated_app_config }}"
+
+    - name: "Display type2."
+      ansible.builtin.debug:
+        msg: "{{ dedicated_app_config | type_debug }}"
+        
     - name: "Combine dictionaries."
       ansible.builtin.debug:
         msg: "{{ app_config | combine(dedicated_app_config) }}"
