@@ -48,12 +48,12 @@
     - name: "Display value from json2."
       ansible.builtin.debug:
         msg: "{{ dedicated_app_config | from_json }}"
-      when: "app_config is string"
+      when: "dedicated_app_config is string"
 
     - name: "Convert input to appropriate type2."
       ansible.builtin.set_fact:
         app_config: "{{ dedicated_app_config | from_json }}"
-      when: "app_config is string"
+      when: "dedicated_app_config is string"
 
     - name: "Display value2."
       ansible.builtin.debug:
