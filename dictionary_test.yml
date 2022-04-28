@@ -4,7 +4,9 @@
   connection: "local"
   gather_facts: false
   vars:
-    app_config: "{{ app_config }}"
+    app_config: 
+      - "{{ test1 }}"
+      - "{{ test2 }}"
     dedicated_app_config:
       WEBSITES_PORT: "9080"
       WEBSITE_VNET_ROUTE_ALL: "1"
