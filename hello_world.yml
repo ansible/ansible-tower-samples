@@ -6,6 +6,6 @@
       debug:
         msg: "Hello World!"
     - name: copy file from ansible controller to a network device
-      ansible.netcommon.net_put:
+      net_put:
         src: running_cfg_ios1.txt
 
