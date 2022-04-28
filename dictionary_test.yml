@@ -4,8 +4,7 @@
   connection: "local"
   gather_facts: false
   vars:
-    app_config:
-    app_config_dict: "{{ app_config|map('from_yaml')|list }}"
+    app_config: "{{ app_config }}"
     dedicated_app_config:
       WEBSITES_PORT: "9080"
       WEBSITE_VNET_ROUTE_ALL: "1"
@@ -36,35 +35,6 @@
     - name: "Display type."
       ansible.builtin.debug:
         msg: "{{ app_config | type_debug }}"
-
-
-    - name: "Display value2."
-      ansible.builtin.debug:
-        msg: "{{ dedicated_app_config }}"
-
-    - name: "Display type2."
-      ansible.builtin.debug:
-        msg: "{{ dedicated_app_config | type_debug }}"
-
-    - name: "Display value from json2."
-      ansible.builtin.debug:
-        msg: "{{ dedicated_app_config | from_json }}"
-      when: "dedicated_app_config is string"
-
-    - name: "Convert input to appropriate type2."
-      ansible.builtin.set_fact:
-        app_config: "{{ dedicated_app_config | from_json }}"
-      when: "dedicated_app_config is string"
-
-    - name: "Display value2."
-      ansible.builtin.debug:
-        msg: "{{ dedicated_app_config }}"
-
-    - name: "Display type2."
-      ansible.builtin.debug:
-        msg: "{{ dedicated_app_config | type_debug }}"
-        
-        
         
         
         
