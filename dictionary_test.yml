@@ -1,0 +1,41 @@
+---
+- name: "Playbook to test dictionary variable in Tower."
+  hosts: "localhost"
+  connection: "local"
+  gather_facts: false
+  vars:
+    app_config:
+    dedicated_app_config:
+      WEBSITES_PORT: "9080"
+      WEBSITE_VNET_ROUTE_ALL: "1"
+
+  tasks:
+    - name: "Display value."
+      ansible.builtin.debug:
+        msg: "{{ app_config }}"
+
+    - name: "Display type."
+      ansible.builtin.debug:
+        msg: "{{ app_config | type_debug }}"
+
+    - name: "Display value from json."
+      ansible.builtin.debug:
+        msg: "{{ app_config | from_json }}"
+      when: "app_config is string"
+
+    - name: "Convert input to appropriate type."
+      ansible.builtin.set_fact:
+        app_config: "{{ app_config | from_json }}"
+      when: "app_config is string"
+
+    - name: "Display value."
+      ansible.builtin.debug:
+        msg: "{{ app_config }}"
+
+    - name: "Display type."
+      ansible.builtin.debug:
+        msg: "{{ app_config | type_debug }}"
+
+    - name: "Combine dictionaries."
+      ansible.builtin.debug:
+        msg: "{{ app_config | combine(dedicated_app_config) }}"
