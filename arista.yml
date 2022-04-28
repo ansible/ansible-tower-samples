@@ -1,13 +1,12 @@
-- name: gather EOS facts
-  hosts: 18.223.160.74
-  gather_facts: false
-  vars:
-    ansible_network_os: arista.eos.eos
-    ansible_connection: httpapi
-    ansible_network_cli_ssh_type: libssh
-
-  tasks:
-  - name: use eos_command module
-    arista.eos.eos_command:
-      commands: show version 
-    register: command_output
+- name: Change state
+  arista.eos.eos_interfaces:
+    config:
+      - name: '{{ item }}'
+        enabled: '{{ eos_interface_state.enabled }}'
+    state: merged
+  loop: '{{ eos_interface_state.interfaces }}'
+  retries: 3
+  delay: 5
+  until: arista_intf_state is not failed
+  register: arista_intf_state
+    
