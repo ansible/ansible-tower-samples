@@ -8,15 +8,15 @@
   tasks:
     - name: Place file on server
       ansible.builtin.copy:
-        src: ./dummyFile
-        dest: /root/dummyFile
+        src: /tmp/dummyFile
+        dest: /tmp/dummyFile
         owner: root
         group: root
         mode: 0600
 
     - name: Add a line to a file if the file does not exist, without passing regexp
       ansible.builtin.lineinfile:
-        path: /root/dummyFile
+        path: /tmp/dummyFile
         line: Testing Adding A Line
         create: yes 
 
