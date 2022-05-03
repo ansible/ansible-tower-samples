@@ -1,0 +1,15 @@
+---
+- name: Sample playbook
+  hosts: localhost
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: /bin/python3
+
+  tasks:
+    - name: Create a new incident
+      servicenow.itsm.incident:
+        caller: Ansible
+        short_description: AOP Demo incident
+        impact: low
+        urgency: low
+      delegate_to: 3.14.146.89
