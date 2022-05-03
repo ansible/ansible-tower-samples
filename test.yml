@@ -9,7 +9,7 @@
     - name: Place file on server
       ansible.builtin.copy:
         src: /opt/test
-        dest: /tmp/dummyFile
+        dest: /tmp/
         owner: root
         group: root
         mode: 0600
