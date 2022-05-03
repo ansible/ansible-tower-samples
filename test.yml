@@ -8,7 +8,7 @@
   tasks:
     - name: Place file on server
       ansible.builtin.copy:
-        src: /opt/test
+        src: /opt/test/dummyFile
         dest: /tmp/
         owner: root
         group: root
