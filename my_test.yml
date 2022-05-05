@@ -8,8 +8,12 @@
   tasks:
     - name: Create a new incident
       servicenow.itsm.incident:
+        instance:
+          host: https://dev112100.service-now.com
+          username: aes.creator
+          password: ChwuBeF%2BH55%24
         caller: Ansible
         short_description: AOP Demo incident
         impact: low
         urgency: low
-      delegate_to: https://dev112100.service-now.com/login.do?user_name=aes.creator&sys_action=sysverb_login&user_password=ChwuBeF%2BH55%24
+      #delegate_to: https://dev112100.service-now.com/login.do?user_name=aes.creator&sys_action=sysverb_login&user_password=ChwuBeF%2BH55%24
