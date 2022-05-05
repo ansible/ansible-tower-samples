@@ -11,7 +11,7 @@
         instance:
           host: https://dev112100.service-now.com
           username: aes.creator
-          password: ChwuBeF%2BH55%24
+          password: ChwuBeF+H55$
         caller: Ansible
         short_description: AOP Demo incident
         impact: low
