@@ -12,4 +12,4 @@
         short_description: AOP Demo incident
         impact: low
         urgency: low
-      delegate_to: 10.101.34.122
+      #delegate_to: 10.101.34.122
