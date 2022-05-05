@@ -10,4 +10,5 @@ collections:
 #- community.vmware
 #- name: 'https://github.com/jbird2021/ansible-tower-samples/blob/master/freeipa-ansible_freeipa-1.6.2.tar.gz'
 #- name: 'https://github.com/mkayontour/icinga2_ansible_collection/releases/download/0.1.0/icinga2-icinga2_collection-0.1.0.tar.gz'
-- arista.eos
+#- arista.eos
+- servicenow.itsm
