@@ -8,5 +8,5 @@
     - name: Ping
       debug:
         msg: "{{ password }}"
-        no_log: True
+      no_log: True  
 
