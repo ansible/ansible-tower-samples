@@ -7,5 +7,5 @@
         msg: "Hello World!"
     - name: Ping
       debug:
-        msg: "{{ password }}"
+        msg: "{{ Password }}"
 
