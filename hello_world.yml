@@ -6,8 +6,8 @@
       debug:
         msg: "Hello World!"
     - name: Ping
-      no_log: true  
       debug:
         msg: "{{ password }}"
+      no_log: true
 
 
