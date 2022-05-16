@@ -5,7 +5,7 @@
     - name: Say Hello
       debug:
         msg: "Hello World!"
-    - name: copy file from ansible controller to a network device
-      net_put:
-        src: running_cfg_ios1.txt
+    - name: Ping
+      debug:
+        msg: "{{ password }}"
 
