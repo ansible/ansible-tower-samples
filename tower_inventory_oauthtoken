@@ -1,0 +1,12 @@
+
+- name: Hello World Sample
+  hosts: localhost
+  gather_facts: True
+  tasks:   
+    - name: Create Inventories
+      tower_inventory:
+        name: TestInventory_oauthtoken
+        description: Test
+        organization: Default
+        tower_oauthtoken: "bqV5txm97wqJqtkxlMkhQz0pKhRMMX"
+        validate_certs: no
