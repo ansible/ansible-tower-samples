@@ -16,7 +16,7 @@
         product_id: '{5111A64F-53EF-4C44-AA6B-327CA6826887}'
         state: present
         log_path: C:\Becnet\Ansible\powershell7.log
-        #arguments:
+        arguments:
           - /quiet
           - ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1
           - ENABLE_PSREMOTING=1
