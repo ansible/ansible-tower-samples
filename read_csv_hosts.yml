@@ -35,5 +35,5 @@
 
     - name: write cert_details to csv file
       template:
-        src: generate_csv.j2
-        dest: certs_details.csv
+        src: /opt/generate_csv.j2
+        dest: /opt/certs_details.csv
