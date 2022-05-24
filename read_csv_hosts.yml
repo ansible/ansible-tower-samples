@@ -4,7 +4,7 @@
   tasks:   
     - name: Read users from CSV file and return a list
       read_csv:
-        path: /tmp/non-prod-ssl.csv
+        path: non-prod-ssl.csv
       register: results
       delegate_to: localhost
 
