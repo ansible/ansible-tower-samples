@@ -3,7 +3,7 @@
   gather_facts: True 
   tasks:   
     - name: Read users from CSV file and return a list
-      community.general.read_csv:
+      read_csv:
         path: non-prod-ssl.csv
       register: results
       delegate_to: localhost
