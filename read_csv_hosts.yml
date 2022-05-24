@@ -16,7 +16,7 @@
       get_certificate:
         host: "{{ item.HOSTNAME }}"
         port: "{{ item.PORT }}"
-        select_crypto_backend: cryptography
+        select_crypto_backend: pyopenssl
       run_once: true
       register: cert
       delegate_to: localhost
