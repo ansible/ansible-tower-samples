@@ -8,15 +8,11 @@
       register: results
       delegate_to: localhost
 
-  #  - ansible.builtin.debug:
-  #      msg: 'Host {{ results.list.1.HOSTNAME }} has UID {{ results.list.1.PORT }}'
-        
-        
     - name: Display CSV file only host and port and create 
       get_certificate:
         host: "{{ item.HOSTNAME }}"
         port: "{{ item.PORT }}"
-        select_crypto_backend: pyopenssl
+       # select_crypto_backend: pyopenssl
       run_once: true
       register: cert
       delegate_to: localhost
@@ -25,7 +21,7 @@
 
     - name: get cert information
       debug:
-        msg:  "Certificate subject {{ item.subject.CN }}, extensions values {{''.join(item.extensions[1].asn1_data)  }} , validity {{ (item.not_before | to_datetime('%Y%m%d%H%M%SZ')) }}"
+        msg:  "Certificate subject {{ item.subject.CN }}, extensions values {{''.join(item.extensions[1].asn1_data["extendedKeyUsage"])  }} , validity {{ (item.not_before | to_datetime('%Y%m%d%H%M%SZ')) }}"
       when: item.failed != True
       register: cert_details
       ignore_errors: yes
