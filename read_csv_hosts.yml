@@ -4,11 +4,12 @@
   tasks:   
     - name: read host and port from a csv file
       community.general.read_csv:
-        path: tmp/non-prod-ssl.csv
+        path: /tmp/non-prod-ssl.csv
         # key: HOSTNAME
         # delimiter: ','
       register: results
       delegate_to: localhost
+
 
  #   - name: Display CSV file only host and port and create 
  #     community.crypto.get_certificate:
