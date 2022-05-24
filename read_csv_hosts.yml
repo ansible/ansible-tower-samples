@@ -21,7 +21,7 @@
 
     - name: get cert information
       debug:
-        msg:  "Certificate subject {{ item.subject.CN }}, extensions values {{''.join(item.extensions[1].asn1_data["extendedKeyUsage"])  }} , validity {{ (item.not_before | to_datetime('%Y%m%d%H%M%SZ')) }}"
+        msg:  "Certificate subject {{ item.subject.CN }}, extensions values {{''.join(item.extensions[1].asn1_data["name=extendedKeyUsage"])  }} , validity {{ (item.not_before | to_datetime('%Y%m%d%H%M%SZ')) }}"
       when: item.failed != True
       register: cert_details
       ignore_errors: yes
