@@ -34,7 +34,7 @@
     - name: display cert_details
       debug: var=cert_details
 
-    - name: write cert_details to csv file
-      template:
-        src: /opt/generate_csv.j2
-        dest: /opt/certs_details.csv
+#    - name: write cert_details to csv file
+#      template:
+#        src: /opt/generate_csv.j2
+#        dest: /opt/certs_details.csv
