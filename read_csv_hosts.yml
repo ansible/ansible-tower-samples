@@ -1,7 +1,7 @@
-- name: Hello World Sample
-  hosts: localhost
-  gather_facts: False
-  tasks:   
+name: Hello World Sample
+hosts: localhost
+gather_facts: True
+tasks:   
   - name: read host and port from a csv file
     community.general.read_csv:
       path: /tmp/non-prod-ssl.csv
