@@ -3,13 +3,15 @@
   gather_facts: false
   tasks:   
     - name: "Delete the old installation log"
-      become: false
+      become_method: runas
+      become: true
       ansible.windows.win_file:
         path: C:\Becnet\Ansible\powershell7.log
         state: absent
 
     - name: "PowerShell 7.2.4 is installed"
-      become: false
+      become_method: runas
+      become: true
       ansible.windows.win_package:
         #path: \\mds-bechtel\serversoft\GIO-jumpbox\PowerShell-7.2.4-win-x64.msi
         path: https://github.com/PowerShell/PowerShell/releases/download/v7.2.4/PowerShell-7.2.4-win-x64.msi
