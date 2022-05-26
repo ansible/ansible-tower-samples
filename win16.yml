@@ -2,12 +2,12 @@
   hosts: windows
   gather_facts: false
   tasks:   
-    - name: "Delete the old installation log"
-      #become_method: runas
-      become: true
-      ansible.windows.win_file:
-        path: C:\Becnet\Ansible\powershell7.log
-        state: absent
+   # - name: "Delete the old installation log"
+   #   #become_method: runas
+   #   become: true
+   #   ansible.windows.win_file:
+   #     path: C:\Becnet\Ansible\powershell7.log
+   #     state: absent
 
     - name: "PowerShell 7.2.4 is installed"
       #become_method: runas
