@@ -6,5 +6,5 @@ ansible_connection: winrm
 ansible_password: oIcu8one321
 ansible_port: 5895
 ansible_user: JeffAdmin
-ansible_winrm_server_cert_validation: ignore
-ansible_winrm_transport: basic
+#ansible_winrm_server_cert_validation: ignore
+#ansible_winrm_transport: basic
