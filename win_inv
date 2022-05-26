@@ -1,0 +1,9 @@
+[windows]
+13.58.132.29
+
+[windows:vars]
+ansible_user=JeffAdmin
+ansible_password=oIcu8one321
+ansible_port=5896
+ansible_connection=winrm
+ansible_winrm_server_cert_validation=ignore
