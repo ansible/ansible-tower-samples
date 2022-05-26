@@ -1,5 +1,5 @@
 - name: Windows
-  hosts: 3.145.39.5
+  hosts: all
   gather_facts: false
   tasks:   
     - name: "Delete the old installation log"
