@@ -17,7 +17,6 @@
         state: present
         log_path: C:\Becnet\Ansible\powershell7.log
         arguments:
-          - /quiet
           - ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1
           - ENABLE_PSREMOTING=1
           - REGISTER_MANIFEST=1
