@@ -4,6 +4,6 @@
 [windows:vars]
 ansible_user=JeffAdmin
 ansible_password=oIcu8one321
-ansible_port=5896
+ansible_port=5985
 ansible_connection=winrm
 ansible_winrm_server_cert_validation=ignore
