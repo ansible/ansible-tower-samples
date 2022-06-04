@@ -5,8 +5,7 @@
     vcenter_hostname: "localhost"
     vcenter_username: "vcenter_username"
     vcenter_password: "vcenter_password"
-    dc: "dc"
-    target_host: "target_host"
+
   tasks:   
     - name: Say Hello
       debug:
