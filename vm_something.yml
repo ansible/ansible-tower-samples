@@ -2,7 +2,7 @@
   hosts: localhost
   gather_facts: False
   vars:
-    vcenter_host: "localhost"
+    vcenter_hostname: "localhost"
     vcenter_username: "vcenter_username"
     vcenter_password: "vcenter_password"
     dc: "dc"
