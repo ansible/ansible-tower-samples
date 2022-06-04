@@ -19,4 +19,4 @@
       delegate_to: localhost
       register: vminfo
     - debug:
-      var: vminfo.virtual_machines
+        var: vminfo.virtual_machines
