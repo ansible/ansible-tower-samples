@@ -2,7 +2,6 @@
   hosts: localhost
   gather_facts: False
   vars:
-    servers: "localhost"
     vcenter_hostname: "localhost"
     vcenter_username: "vcenter_username"
     vcenter_password: "vcenter_password"
@@ -18,15 +17,12 @@
 #    - debug:
 #        var: vminfo.virtual_machines
 
-   - name: Bye World Sample
-     hosts: "{{ servers }}"
-     tasks:
-       - name: Gather all registered virtual machines
-         community.vmware.vmware_vm_info:
-           hostname: '{{ lookup("env", "VMWARE_HOST") }}'
-           username: '{{ lookup("env", "VMWARE_USER") }}'
-           password: '{{ lookup("env", "VMWARE_PASSWORD") }}'
-         delegate_to: localhost
-         register: vminfo
-       - debug:
-         var: vminfo.virtual_machines
+     - name: Gather all registered virtual machines
+       community.vmware.vmware_vm_info:
+         hostname: '{{ vcenter_hostname }}'
+         username: '{{ vcenter_username }}'
+         password: '{{ vcenter_password }}'
+       delegate_to: localhost
+       register: vminfo
+     - debug:
+       var: vminfo.virtual_machines
