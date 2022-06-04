@@ -12,5 +12,5 @@ collections:
 #- name: 'https://github.com/mkayontour/icinga2_ansible_collection/releases/download/0.1.0/icinga2-icinga2_collection-0.1.0.tar.gz'
 #- arista.eos
 - name: community.vmware
-  version: 2.4.0
+#  version: 2.4.0
 #- ansible.windows
