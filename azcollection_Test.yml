@@ -1,5 +1,5 @@
 - name: Create a windows web app with non-exist app service plan
-  hosts: webservers
+  hosts: all
   gather_facts: False
   collections:
     - azure.azcollection
