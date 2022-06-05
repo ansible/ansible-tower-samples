@@ -31,7 +31,14 @@ def log():
 # FLASK_APP=log flask run -h 0.0.0.0 -p 8080
 
 
-
+#-------------------------------------------------------------------------#
+#Controller settings:
+#Logging Aggregator = http://localhost
+#Logging Aggregator Port = 8080
+#Logging Aggregator Type = 
+#Logging Aggregator Protocol = HTTPS/HHTP
+#
+#
 
 
 
