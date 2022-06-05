@@ -1,5 +1,5 @@
 - name: Hello World Sample
-  hosts: all
+  hosts: webservers
   gather_facts: False
   tasks:   
     - name: Say Hello
