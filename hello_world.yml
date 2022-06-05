@@ -1,5 +1,5 @@
 - name: Hello World Sample
-  hosts: webservers
+  hosts: "{{ hosts }}"
   gather_facts: False
   tasks:   
     - name: Say Hello
