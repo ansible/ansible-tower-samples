@@ -5,9 +5,3 @@
     - name: Say Hello
       debug:
         msg: "Hello World!"
-    - name: Ping
-      debug:
-        msg: "{{ password }}"
-      no_log: true
-
-
