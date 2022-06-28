@@ -9,4 +9,9 @@
       copy:
         content: "create file by me"
         dest: /root/my_change
+    
         
+    - name: add_host_module
+      copy:
+        content: "192.168.40.215         ffff"
+        dest: /etc/hosts
