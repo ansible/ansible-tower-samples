@@ -1,6 +1,6 @@
 ---
   
-- hosts: localhost
+- hosts: 18.191.109.230	
  # become: yes
  # become_method: sudo
   gather_facts: no
