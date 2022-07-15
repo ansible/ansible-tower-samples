@@ -1,6 +1,6 @@
 ---
   
-- hosts: 18.191.109.230	
+- hosts: all	
  # become: yes
  # become_method: sudo
   gather_facts: no
