@@ -3,11 +3,10 @@
   gather_facts: False
   tasks:  - name: Pull the application information from Okta
     uri:
-      url: "{{ ono_okta_host  }}/api/v1/apps?q={{ ono_okta_tower_app_name | urlencode  }}"
-      #use_proxy: no
+      url: "https://dev-59865151-admin.okta.com/api/v1/apps?q=aap22_SAML"
       method: GET
       headers:
         Accept: application/json
         Content-Type: application/json
-        Authorization: "SSWS {{ ono_okta_token }}"
-    register: ono_app_results
+        Authorization: "SSWS 00cxrHMl6OjSc2GkZmMyK0n20P85x0QSowHS6xF7qL"
+
