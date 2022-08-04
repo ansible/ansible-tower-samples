@@ -1,7 +1,8 @@
 - name: Hello World Sample
   hosts: localhost
   gather_facts: False
-  tasks:  - name: Pull the application information from Okta
+  tasks:  
+  - name: Pull the application information from Okta
     uri:
       url: "https://dev-59865151-admin.okta.com/api/v1/apps?q=aap22_SAML"
       method: GET
