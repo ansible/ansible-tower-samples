@@ -1,0 +1,15 @@
+- name: Hello World Sample
+  hosts: localhost
+  gather_facts: False
+  tasks:   
+    - name: Say Hello
+      debug:
+        msg: "Hello World!"
+    - name: "rhel-registration | Disable All Repos Except Those Required For Patching"
+      command: "subscription-manager {{ item }}"
+      with_items:
+        - "repos --disable='*'"
+        - "repos --enable=rhel-7-server-insights-3-rpms"
+        - "repos --enable=rhel-7-server-rpms"
+        - "repos --enable=rhel-7-server-satellite-tools-6.10-rpms"
+      become: true
