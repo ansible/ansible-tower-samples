@@ -1,9 +1,6 @@
-- name: Create a windows web app with non-exist app service plan
+- name: Long Running Job'
   hosts: all
   gather_facts: False
-  collections:
-    - azure.azcollection
-    - community.azure
   tasks:
     - name: Hello Message
       debug:
