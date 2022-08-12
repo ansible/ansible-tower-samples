@@ -1,0 +1,57 @@
+- name: Create a windows web app with non-exist app service plan
+  hosts: all
+  gather_facts: False
+  collections:
+    - azure.azcollection
+    - community.azure
+  tasks:
+    - name: Hello Message
+      debug:
+        msg: "Hello World 1 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 2 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 3 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 4 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 5 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 6 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 7 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 8 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 9 of 10"
+    - name: Wait
+      delay: 5
+    - name: Hello Message
+      debug:
+        msg: "Hello World 10 of 10"
+    - name: Wait
+      delay: 5      
