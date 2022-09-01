@@ -1,11 +1,23 @@
 ---
   
-- hosts: all	
+- hosts: localhost	
  # become: yes
  # become_method: sudo
   gather_facts: no
 
   tasks:
-    - ping:
+#    - ping:
 #      crash: data
-    
+    - name: Create Local splunk user Account
+      ansible.builtin.user:
+        name: splunk
+        group: wheel
+        password: "{{ local_splunk_pass }}"
+        state: present
+        append: yes 
+        update_password: always
+        comment: splunk user
+      register: passinfo
+
+    - debug:
+        var: passinfo
