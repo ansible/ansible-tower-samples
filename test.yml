@@ -1,8 +1,8 @@
 ---
   
 - hosts: localhost	
-  become: yes
-  become_method: awx
+  #become: yes
+  #become_method: awx
   gather_facts: no
 
   tasks:
