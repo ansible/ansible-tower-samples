@@ -2,7 +2,7 @@
   
 - hosts: localhost	
   become: yes
-  become_method: sudo
+  become_method: awx
   gather_facts: no
 
   tasks:
