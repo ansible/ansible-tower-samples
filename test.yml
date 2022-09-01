@@ -12,7 +12,7 @@
       ansible.builtin.user:
         name: splunk
         group: wheel
-        password: "{{ local_splunk_pass }}"
+        password: test
         state: present
         append: yes 
         update_password: always
