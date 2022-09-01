@@ -6,18 +6,18 @@
   gather_facts: no
 
   tasks:
-#    - ping:
-#      crash: data
-    - name: Create Local splunk user Account
-      ansible.builtin.user:
-        name: splunk
-        group: wheel
-        password: $6$mysecretsalt$EDJBe8bLUKjct3jRv7d.D3RFGjkJJ7NnK0zve2AYB2TV5Cv48lWvAfRuGqjf8e6DNFWdKpa82Lcx1VUPK6R1k.
-        state: present
-        append: yes 
-        update_password: always
-        comment: splunk user
-      register: passinfo
+    - ping:
+      crash: data
+ #   - name: Create Local splunk user Account
+ #     ansible.builtin.user:
+ #       name: splunk
+ #       group: wheel
+ #       password: $6$mysecretsalt$EDJBe8bLUKjct3jRv7d.D3RFGjkJJ7NnK0zve2AYB2TV5Cv48lWvAfRuGqjf8e6DNFWdKpa82Lcx1VUPK6R1k.
+ #       state: present
+ #       append: yes 
+ #       update_password: always
+ #       comment: splunk user
+ #     register: passinfo
 
-    - debug:
-        var: passinfo
+ #   - debug:
+ #       var: passinfo
