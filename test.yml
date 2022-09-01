@@ -1,8 +1,8 @@
 ---
   
 - hosts: all	
-  #become: yes
-  #become_method: awx
+  become: yes
+  become_method: sudo
   gather_facts: no
 
   tasks:
