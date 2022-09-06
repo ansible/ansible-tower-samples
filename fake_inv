@@ -1,12 +1,12 @@
 [new_test]
-gabe_example10 scm_id=1
-gabe_example2
-gabe_example3
+fake01 scm_id=1
+fake02
+fake03
 [new_test1]
-gabe_example4
-gabe_example5
-gabe_example6
+fake04
+fake05
+fake06
 [new_test2]
-gabe_example7
-[test_499]
-test-branch
+fake07
+fake08
+fake09
