@@ -35,4 +35,4 @@
       set_fact:
         alice_exists: true
       loop: "{{ lookup('dict', users) }}"
-      when: "'t' in item.key"
+      when: "'t' in users[name]"
