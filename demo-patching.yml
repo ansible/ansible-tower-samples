@@ -1,0 +1,23 @@
+---
+- name: patching os demo
+  hosts: all
+  remote_user: root
+  tasks:
+  - name: Install Apache >= 2.4
+    ansible.builtin.yum:
+       name: httpd
+       state: present
+
+  - name: Update all installed packages using YUM module
+    yum:
+      name: '*'
+      state: latest
+      update_cache: yes
+      update_only: yes
+      exclude:
+        - ansible
+
+  - name: Install nginx
+    yum:
+     name: nginx
+     state: present
