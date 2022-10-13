@@ -1,5 +1,5 @@
 - name: Setup web Flsk web server
-  hosts: web_server_ubuntu_1
+  hosts: localhost
   tasks:
     - name: Ping
       ping:
