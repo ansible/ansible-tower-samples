@@ -1,7 +1,11 @@
-- name: Hello World Sample
-  hosts: 10.20.1.2
+- name: Setup web Flsk web server
+  hosts: web_server_ubuntu_1
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
-
+    - name: Ping
+      ping:
+    - name: copy src.txt as dest.txt in the same dir
+      copy:
+        src: src.txt
+        dest: /home/pi/dest.txt
+      tags:
+        - simple_copy
