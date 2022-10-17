@@ -1,0 +1,11 @@
+- name: Setup web Flsk web server
+  hosts: localhost
+  tasks:
+    - name: Ping
+      ping:
+    - name: copy src.txt as dest.txt in the same dir
+      copy:
+        src: src.txt
+        dest: /home/pi/dest.txt
+      tags:
+        - simple_copy
