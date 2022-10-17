@@ -1,7 +1,8 @@
-- name: Hello World Sample
-  hosts: all
+---
+- hosts: localhost
+  connection: local
   tasks:
-    - name: Hello Message
-      debug:
-        msg: "Hello World!"
+  - name: print the OS name
+    debug:
+      msg: "you are running scripts on {{ ansible_system }}"
 
