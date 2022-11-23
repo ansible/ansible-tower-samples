@@ -3,5 +3,7 @@
   tasks:
     - name: Hello Message
       debug:
-        msg: "Hello World!"
+        msg: 
+          - "Hello World!"
+          - "Extra var from Tower: {{ mytowervariable }}"
 
