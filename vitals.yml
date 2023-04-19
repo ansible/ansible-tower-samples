@@ -1,0 +1,9 @@
+- name: Vitals
+  hosts: localhost
+  gather_facts: yes
+  tasks:
+          - name: Get uptime of server
+            shell: |
+                    uptime | awk '{ print $3 " " $4 }' | cut -d "," -f1
+            when: ansible_facts["os_name"] == 'Ubuntu'
+            register: uptime
