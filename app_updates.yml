@@ -1,0 +1,8 @@
+- name: "Chocolatey"
+  hosts: windows
+  tasks:
+    - name: update
+      win_chocolatey:
+           name: all
+           state: latest
+           ignore_checksums: yes
