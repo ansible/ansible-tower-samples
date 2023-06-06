@@ -1,0 +1,16 @@
+---
+- name: Configure Cisco ASA
+  hosts: asa
+  gather_facts: false
+  tasks:
+    - name: Configure ASA
+      block:
+        - name: Configure inside interface
+          cisco.asa.asa_config:
+            lines:
+            - description inside interface
+            - no shutdown
+            - nameif inside
+            - security-level 100
+            - ip address 10.10.51.70 255.255.255.0
+            parents: [interface GigabitEthernet0/2]
