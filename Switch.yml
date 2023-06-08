@@ -1,0 +1,16 @@
+---
+- name: Configure Cisco Switch
+  hosts: cisco_switches
+  gather_facts: no
+  connection: network_cli
+  tasks:
+    - name: Configure hostname
+      ios_system:
+        hostname: switch1
+      register: result
+    - name: Configure interface
+      ios_interface:
+        name: GigabitEthernet1/0/1
+        description: Server connection
+        switchport_mode: access
+        switchport_access_vlan: 10
