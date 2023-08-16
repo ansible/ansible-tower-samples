@@ -3,6 +3,9 @@
   hosts: localhost
   vars:
     controller_validate_certs: false
+    controller_settings:
+      - name: AWX_COLLECTIONS_ENABLED
+        value: "false"
     controller_credentials:
       - name: Automation Hub
         organization: Default
@@ -26,7 +29,7 @@
         organization: Default
         scm_type: git
         scm_url: https://github.com/RedHatGov/product-demos
-        scm_branch: "{{ product_demos_branch | default(main) }}"
+        scm_branch: "{{ product_demos_branch | default('main') }}"
         wait: true
     controller_templates:
       - name: "SETUP"
@@ -57,10 +60,10 @@
 
   tasks:
   - name: Setup Components
-    ansible.builtin.include_role:
-      name: "infra.controller_configuration.disapatch"
+    include_role:
+      name: infra.controller_configuration.dispatch
 
   - name: Print Message
-    anisble.builtin.debug:
+    debug:
       msg: "{{ user_message }}"
     when: user_message is defined
