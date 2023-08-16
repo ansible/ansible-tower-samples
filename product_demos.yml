@@ -1,0 +1,66 @@
+---
+- name: Configure for Ansible Product Demos
+  hosts: localhost
+  vars:
+    controller_validate_certs: false
+    controller_credentials:
+      - name: Automation Hub
+        organization: Default
+        credential_type: Ansible Galaxy/Automation Hub API Token
+        update_secrets: false
+        inputs:
+          url: https://console.redhat.com/api/automation-hub/
+          auth_url: https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+    controller_execution_environments:
+      - name: product-demos
+        image: quay.io/acme_corp/product-demos-ee:latest
+    controller_organizations:
+      - name: Default
+        default_environment:
+          name: 'product-demos'
+        galaxy_credentials:
+          - Ansible Galaxy
+          - Automation Hub
+    controller_projects:
+      - name: Ansible official demo project
+        organization: Default
+        scm_type: git
+        scm_url: https://github.com/RedHatGov/product-demos
+        scm_branch: "{{ product_demos_branch | default(main) }}"
+        wait: true
+    controller_templates:
+      - name: "SETUP"
+        job_type: run
+        inventory: "Demo Inventory"
+        project: "Ansible official demo project"
+        playbook: "setup_demo.yml"
+        credentials: "Controller Credential"
+        allow_simultaneous: true
+        survey_enabled: true
+        survey_spec:
+          name: 'Survey'
+          description: ''
+          spec:
+            - type: multiplechoice
+              question_name: Demo Category
+              variable: demo
+              required: true
+              choices:
+                - linux
+                - windows
+                - cloud
+                - network
+                - satellite
+    user_message:
+      - Run the SETUP job template and select a use case
+      - Find more documentation at https://github.com/ansible/product-demos/
+
+  tasks:
+  - name: Setup Components
+    ansible.builtin.include_role:
+      name: "infra.controller_configuration.disapatch"
+
+  - name: Print Message
+    anisble.builtin.debug:
+      msg: "{{ user_message }}"
+    when: user_message is defined
