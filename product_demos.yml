@@ -2,7 +2,6 @@
 - name: Configure for Ansible Product Demos
   hosts: localhost
   vars:
-    product_demos_branch: rhpd_test
     controller_validate_certs: false
     controller_settings:
       - name: AWX_COLLECTIONS_ENABLED
