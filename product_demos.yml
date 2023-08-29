@@ -53,6 +53,7 @@
                 - windows
                 - cloud
                 - network
+                - openshift
                 - satellite
     user_message:
       - Run the SETUP job template and select a use case
