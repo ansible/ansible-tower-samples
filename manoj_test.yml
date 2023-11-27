@@ -1,0 +1,5 @@
+- name: Disk spacde
+  hosts: all
+  tasks:
+    - name: disk space statuse
+      shell: df -h
